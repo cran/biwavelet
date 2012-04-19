@@ -1,0 +1,7 @@
+## Export all names
+exportPattern(".")
+## S3 methods for plotting
+S3method(plot, biwavelet)
+
+
+
