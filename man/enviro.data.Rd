@@ -21,11 +21,11 @@ Monthly indices of ENSO, NPGO, and PDO from 1950 to 2009
 }
 
 \source{
-MEI: http://www.esrl.noaa.gov/psd/enso/mei/
+MEI: \url{http://www.esrl.noaa.gov/psd/enso/mei}
 
-NPGO: http://www.o3d.org/npgo/
+NPGO: \url{http://www.o3d.org/npgo}
 
-PDO: http://jisao.washington.edu/pdo/
+PDO: \url{http://jisao.washington.edu/pdo}
 }
 \references{
 Di Lorenzo, E., N. Schneider, K. M. Cobb, P. J. S. Franks, K. Chhak, A. J. Miller, 

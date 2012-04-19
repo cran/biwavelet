@@ -36,8 +36,8 @@ degrees of freedom for each point in wavelet power.
 AR(1) coefficient of time series used to test for significant patterns.
 }
   \item{mother}{
-type of mother wavelet function to use. Can be set to \code{mother}, \code{dog}, 
-or \code{paul}. Default is \code{mother}.
+type of mother wavelet function to use. Can be set to \code{morlet}, \code{dog}, 
+or \code{paul}. Default is \code{morlet}.
 }
   \item{param}{
 nondimensional parameter specific to the wavelet function.
@@ -66,5 +66,5 @@ Gibert P. Compo.
 
 \examples{
 ## Not run: wt.sig (d, dt, scale, sig.test, sig.level, lag1, dof=-1, 
-##  mother=mother, sigma2=1)
+##  mother=morlet, sigma2=1)
 }

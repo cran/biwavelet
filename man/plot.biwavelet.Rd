@@ -7,13 +7,13 @@ Plot \code{biwavelet} objects
 Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coherence
 }
 \usage{
-\method{plot}{biwavelet} (x, ncol = 64, xlab = "Time", ylab = "Period", main = NULL, 
+\method{plot}{biwavelet} (x, ncol = 64, xlab = "Time", ylab = "Period",
                sig.level = 0.95, plot.cb = FALSE, plot.phase = FALSE, 
                type = c("power.norm", "power", "wavelet", "phase"), 
                plot.coi = TRUE, plot.sig = TRUE, bw = FALSE, 
-               legend.loc = c(0.885, 0.92, 0.2, 0.8), 
-               legend.horiz = FALSE, arrow.size = 0.08, 
-               arrow.lwd = 2, arrow.cutoff = 0.9, form='\%Y', \dots)
+               legend.loc = NULL, legend.horiz = FALSE, 
+               arrow.size = 0.08, arrow.lwd = 2, arrow.cutoff = 0.9, 
+               form='\%Y', \dots)
 }
 \arguments{
   \item{x}{
@@ -28,9 +28,7 @@ xlabel of the figure. Default is "Time"
   \item{ylab}{
 ylabel of the figure. Default is "Period"
 }
-  \item{main}{
-title of the figure. Default is blank.
-}
+
   \item{sig.level}{
 significance level for contours. Default is 0.95.
 }
@@ -56,8 +54,7 @@ plot contours for significance if TRUE. Default is TRUE.
 plot in black and white if TRUE. Default is FALSE.
 }
   \item{legend.loc}{
-legend location coordinates as defined by \code{image.plot}. Default is
-\code{c(0.885, 0.92, 0.2, 0.8)}.
+legend location coordinates as defined by \code{image.plot}. Default is \code{NULL}.
 }
   \item{legend.horiz}{
 plot a horizontal legend if TRUE. Default is FALSE.

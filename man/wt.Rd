@@ -25,7 +25,7 @@ length of a time step.
 spacing between successive scales. Default is 1/12.
 }
   \item{s0}{
-smallest scale of the wavelet. Default is 2*\code{dt}
+smallest scale of the wavelet. Default is \code{2*dt}
 }
   \item{J1}{
 number of scales - 1.
@@ -34,8 +34,8 @@ number of scales - 1.
 maximum scale. Computed automatically if left unspecified.
 }
   \item{mother}{
-type of mother wavelet function to use. Can be set to \code{mother}, \code{dog}, 
-or \code{paul}. Default is \code{mother}.
+type of mother wavelet function to use. Can be set to \code{morlet}, \code{dog}, 
+or \code{paul}. Default is \code{morlet}.
 }
   \item{param}{
 nondimensional parameter specific to the wavelet function.

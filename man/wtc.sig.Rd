@@ -21,7 +21,7 @@ vector containing the AR(1) coefficient of each time series.
 length of a time step.
 }
   \item{pad}{
-pad the values will with zeros to increase the speed of the transform. Default is TRUE.
+pad the values will with zeros to increase the speed of the transform. Default is \code{TRUE}.
 }
   \item{dj}{
 spacing between successive scales. Default is 1/12.
@@ -33,9 +33,9 @@ smallest scale of the wavelet. Default is \code{2*dt}
 number of scales - 1.
 }
   \item{mother}{
-type of mother wavelet function to use. Can be set to \code{mother}, \code{dog}, 
-or \code{paul}. Default is \code{mother}. Significance testing is only available
-for \code{mother} wavelet.
+type of mother wavelet function to use. Can be set to \code{morlet}, \code{dog}, 
+or \code{paul}. Default is \code{morlet}. Significance testing is only available
+for \code{morlet} wavelet.
 }
 }
 \value{
@@ -71,5 +71,5 @@ Code based on WTC MATLAB package written by Aslak Grinsted.
 
 \examples{
 ## Not run: wtcsig=wtc.sig(nrands, lag1 = c(d1.ar1, d2.ar1), dt, 
-##                          pad, dj, J1, s0, mother = mother)
+##                          pad, dj, J1, s0, mother = morlet)
 }

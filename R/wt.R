@@ -40,7 +40,6 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   k = c(0, k, -k[seq(floor(( n - 1) / 2), 1, -1)])
   f = fft(x)
   scale = s0 * 2^(seq(0, J1, 1)*dj)
-  scale = s0 * 2^((0:J1)*dj)
   period = scale
   wave = matrix(0, nrow=J1 + 1, ncol=n)
   wave = wave + 1i*wave

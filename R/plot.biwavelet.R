@@ -1,9 +1,9 @@
 plot.biwavelet <-
-  function (x, ncol=64, xlab="Time", ylab="Period", main=NULL, 
+  function (x, ncol=64, xlab="Time", ylab="Period", 
             sig.level=0.95, plot.cb=FALSE, plot.phase=FALSE,
             type=c("power.norm", "power", "wavelet", "phase"), 
             plot.coi=TRUE, plot.sig=TRUE, bw=FALSE,
-            legend.loc=c(0.885, 0.92, 0.2, 0.8), 
+            legend.loc=NULL, 
             legend.horiz=FALSE,
             arrow.size=0.08,
             arrow.lwd=2, arrow.cutoff=0.9, 
@@ -75,10 +75,9 @@ plot.biwavelet <-
           ylim=rev(range(yvals)),
           xlab=xlab, 
           ylab=ylab,
-          main=main,
           yaxt="n",
           xaxt="n",
-          col=fill.colors)
+          col=fill.colors, ...)
     box()
     
     if (class(x$xaxis) == "Date") {

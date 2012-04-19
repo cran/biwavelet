@@ -12,8 +12,8 @@ wt.bases (mother = c("morlet", "paul", "dog"), k, scale, param = -1)
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{mother}{
-type of mother wavelet function to use. Can be set to \code{mother}, \code{dog}, 
-or \code{paul}. Default is \code{mother}.
+type of mother wavelet function to use. Can be set to \code{morlet}, \code{dog}, 
+or \code{paul}. Default is \code{morlet}.
 }
   \item{k}{
 vector of frequencies at which to calculate the wavelet.
