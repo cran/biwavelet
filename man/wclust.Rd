@@ -18,7 +18,7 @@ wclust (w.arr)
 \value{
 Returns a list containing:
 
-\item{diss.mat }{square dissimilariy matrix}
+\item{diss.mat }{square dissimilarity matrix}
 \item{dist.mat }{(lower triangular) distance matrix}
 }
 

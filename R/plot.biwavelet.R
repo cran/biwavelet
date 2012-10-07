@@ -6,8 +6,8 @@ plot.biwavelet <-
             legend.loc=NULL, 
             legend.horiz=FALSE,
             arrow.size=0.08,
-            arrow.lwd=2, arrow.cutoff=0.9, 
-            form='%Y', ...) {
+            arrow.lwd=2, arrow.cutoff=0.9, xlim = NULL, ylim = NULL,
+            xtick = TRUE, ytick = TRUE, form='%Y', ...) {
     if (bw) {
       bw.colors <- colorRampPalette(c("black", "white"))
       fill.colors=bw.colors(ncol)
@@ -18,14 +18,15 @@ plot.biwavelet <-
                            "#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
       fill.colors=jet.colors(ncol)
     }
-    y.ticks = 2^(floor(log2(min(x$period))):floor(log2(max(x$period))))
+    yrange=ylim
+    y.ticks = 2^(floor(log2(min(x$period, yrange))):floor(log2(max(x$period, yrange))))
     types=c("power.norm", "power", "wavelet", "phase")
     type=match.arg(tolower(type), types)
     
     if (type=="power.norm") {
       if (x$type == "xwt") {
         zvals=log2(abs(x$wave / (x$d1.sigma * x$d2.sigma)))
-        zlims=c(-1, 1) * max(zvals)
+        zlims=range(c(-1, 1) * max(zvals))
         zvals [zvals < zlims[1]]=zlims[1]
         locs=pretty(range(zvals), n=5)
         leg.lab=2^locs
@@ -39,7 +40,7 @@ plot.biwavelet <-
       }
       else {
         zvals=log2(abs(x$power / x$sigma2))
-        zlims=c(-1, 1) * max(zvals)
+        zlims=range(c(-1, 1) * max(zvals))
         zvals [zvals < zlims[1]]=zlims[1]  
         locs=pretty(range(zvals), n=5)
         leg.lab=2^locs
@@ -47,7 +48,7 @@ plot.biwavelet <-
     }
     else if (type=="power") {
       zvals=log2(x$power)
-      zlims=c(-1, 1)*max(zvals)
+      zlims=range(c(-1, 1)*max(zvals))
       zvals [zvals < zlims[1]]=zlims[1]
       locs=pretty(range(zvals), n=5)
       leg.lab=2^locs
@@ -67,29 +68,47 @@ plot.biwavelet <-
     else {
       stop("type must be power, power.norm, wavelet or phase")
     }
+    if (is.null(xlim))
+      xlim=range(x$t)
     yvals=log2(x$period)
+    if (is.null(ylim))
+      ylim=range(yvals)
+    else
+      ylim=log2(ylim)
     image(x$t,
           yvals, 
           t(zvals), 
           zlim=zlims,
-          ylim=rev(range(yvals)),
+          xlim=xlim,
+          ylim=rev(ylim),
           xlab=xlab, 
           ylab=ylab,
           yaxt="n",
           xaxt="n",
           col=fill.colors, ...)
     box()
-    
     if (class(x$xaxis) == "Date") {
-      xlocs=pretty(x$t)+1
-      axis(side=1, at=xlocs, labels=format(x$xaxis[xlocs], form))
+        xlocs=pretty(x$t)+1
+      if (xtick)
+        lab=format(x$xaxis[xlocs], form)
+      else
+        lab=NA
+      axis(side=1, at=xlocs, labels=lab)
     }
     else {
-      xlocs=pretty(x$t)
-      axis(side=1, at=xlocs)
+        xlocs=axTicks(1)
+      if (xtick)
+        xticklab=xlocs
+      else
+        xticklab=NA
+      axis(side=1, at=xlocs, labels=xticklab)
     }
     axis.locs=axTicks(2)
-    axis(2, at=axis.locs, labels=2^axis.locs)
+    if (ytick)
+      yticklab=format(2^axis.locs, dig=1)
+    else
+      yticklab=NA
+    axis(2, at=axis.locs, labels=yticklab)
     
     ## Add color bar
     if (plot.cb) {

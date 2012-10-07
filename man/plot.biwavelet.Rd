@@ -13,6 +13,7 @@ Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coheren
                plot.coi = TRUE, plot.sig = TRUE, bw = FALSE, 
                legend.loc = NULL, legend.horiz = FALSE, 
                arrow.size = 0.08, arrow.lwd = 2, arrow.cutoff = 0.9, 
+               xlim = NULL, ylim = NULL, xtick = TRUE, ytick = TRUE, 
                form='\%Y', \dots)
 }
 \arguments{
@@ -69,6 +70,19 @@ width/thickness of arrows. Default is 2.
 cutoff value for plotting arrows. z-values that fall below the \code{arrow.cutoff}
 quantile will not be plotted. Default is 0.9.
 }
+ \item{xlim}{ 
+ the x limits. The default is \code{NULL}.
+}
+ \item{ylim}{ 
+ the y limits. The default is \code{NULL}.
+}
+ \item{xtick}{ 
+ label x-axis tickmarks. The default is \code{TRUE}.
+}
+ \item{ytick}{ 
+ label y-axis tickmarks. The default is \code{TRUE}.
+}
+
 \item{form}{
 format to use to display dates on the x-axis. Default is '\%Y' for 4-digit year.
 See \code{?Date} for other valid formats.

@@ -5,7 +5,7 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
 
   mothers=c("morlet", "paul", "dog")
   mother=match.arg(tolower(mother), mothers)
-  
+
   if (is.null(dt) & NCOL(d) > 1) {
     if (class(d[,1])=="Date") {
       t = 1:NROW(d)
@@ -36,7 +36,7 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   }
   n=length(x)
   k = seq(1, floor(n / 2), 1)
-  k = k * ((2 * pi)/n * dt)
+  k = k * ((2 * pi)/(n * dt))
   k = c(0, k, -k[seq(floor(( n - 1) / 2), 1, -1)])
   f = fft(x)
   scale = s0 * 2^(seq(0, J1, 1)*dj)
