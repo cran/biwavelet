@@ -7,8 +7,8 @@ Determine significance of wavelet coherence
 Determine significance of wavelet coherence
 }
 \usage{
-wtc.sig (nrands = 300, lag1, dt, pad = TRUE, dj = 1/12, s0, J1, 
-         mother = c("morlet", "paul", "dog"))
+wtc.sig (nrands = 300, lag1, dt, ntimesteps, pad = TRUE, dj = 1/12, s0, J1, 
+         max.scale=NULL, mother = c("morlet", "paul", "dog"), sig.level = 0.95)
 }
 \arguments{
   \item{nrands}{
@@ -19,6 +19,9 @@ vector containing the AR(1) coefficient of each time series.
 }
   \item{dt}{
 length of a time step.
+}
+ \item{ntimesteps}{
+ number of time steps in time series.
 }
   \item{pad}{
 pad the values will with zeros to increase the speed of the transform. Default is \code{TRUE}.
@@ -32,14 +35,19 @@ smallest scale of the wavelet. Default is \code{2*dt}
   \item{J1}{
 number of scales - 1.
 }
+\item{max.scale}{ maximum scale }
+
   \item{mother}{
 type of mother wavelet function to use. Can be set to \code{morlet}, \code{dog}, 
 or \code{paul}. Default is \code{morlet}. Significance testing is only available
 for \code{morlet} wavelet.
 }
+\item{sig.level}{ significance level to compute. Default is \code{0.95} }
+
 }
 \value{
-Returns significance matrix.
+Returns significance matrix containing the \code{sig.level} percentile of wavelet
+coherence at each time step and scale.
 }
 \references{
 Cazelles, B., M. Chavez, D. Berteaux, F. Menard, J. O. Vik, S. Jenouvrier, and 

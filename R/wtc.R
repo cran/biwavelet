@@ -59,24 +59,33 @@ wtc <-
     coi=pmin(wt1$coi, wt2$coi, na.rm=T)
     ## Cross-wavelet
     CW=wt1$wave*Conj(wt2$wave)
+    ## Bias-corrected cross-wavelet
+    CW.corr=(wt1$wave*Conj(wt2$wave)*max(wt1$period))/matrix(rep(wt1$period, length(t)), nrow=NROW(wt1$period))
     ## Power
     power=abs(CW)^2
+    ## Bias-corrected power
+    power.corr = (abs(CW)^2*max.scale)/matrix(rep(wt1$period, length(t)), nrow=NROW(wt1$period))
+    
     ## Wavelet coherence
     smooth.CW=smooth.wavelet(s.inv * (CW), dt, dj, wt1$scale)
+    smooth.CW.corr=smooth.wavelet(s.inv * (CW.corr), dt, dj, wt1$scale)
     rsq=abs(smooth.CW)^2 / (smooth.wt1 * smooth.wt2)
     ## Phase difference
     phase=atan2(Im(CW), Re(CW))
     if (nrands > 0) {
-      wtcsig=wtc.sig(nrands = nrands, lag1 = c(d1.ar1, d2.ar1), dt = dt, pad = pad, 
-                     dj = dj, J1 = J1, s0 = s0, mother = mother)
-      wtcsig=matrix(rep(wtcsig[, 2], n), ncol = n)
-      signif=rsq/wtcsig
+       signif=wtc.sig(nrands = nrands, lag1 = c(d1.ar1, d2.ar1), dt = dt, n, pad = pad, 
+                     dj = dj, J1 = J1, s0 = s0, max.scale = max.scale, mother = mother, 
+                      sig.level = sig.level)
     }
+    else
+      signif=NA
     
     results=list(coi = coi, 
                  wave = CW,
+                 wave.corr = CW.corr,
                  power = power,
-                 rsq = rsq,
+                 power.corr = power.corr,
+                 rsq = rsq, 
                  phase = phase,
                  period = wt1$period, 
                  scale = wt1$scale, 

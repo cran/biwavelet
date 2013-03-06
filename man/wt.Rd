@@ -55,12 +55,15 @@ test.
 perform significance testing if \code{TRUE}. Default is \code{TRUE}.
 }
 }
+
 \value{
 Returns a \code{biwavelet} object containing:
 
 \item{coi }{matrix containg cone of influence}
 \item{wave }{matrix containing the wavelet transform}
 \item{power }{matrix of power}
+\item{power.corr }{matrix of bias-corrected power using the method described 
+by \code{Liu et al. (2007)}}
 \item{phase }{matrix of phases}
 \item{period }{vector of periods}
 \item{scale }{vector of scales}
@@ -78,6 +81,10 @@ Returns a \code{biwavelet} object containing:
 \references{
 Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis. 
 \emph{Bulletin of the American Meteorological Society} 79:61-78.
+
+Liu, Y., X. San Liang, and R. H. Weisberg. 2007. Rectification of the Bias in 
+the Wavelet Power Spectrum. \emph{Journal of Atmospheric and Oceanic Technology} 
+24:2093-2102.
 }
 
 \author{

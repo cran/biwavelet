@@ -51,9 +51,13 @@ function (d1, d2, pad=TRUE, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   d2.sigma=sd(d2[,2], na.rm=T)  
   coi=pmin(wt1$coi, wt2$coi, na.rm=T)
   ## Cross-wavelet
-  W.d1d2=wt1$wave*Conj(wt2$wave)  
+  W.d1d2=wt1$wave*Conj(wt2$wave)
   ## Power
-  power=abs(W.d1d2)^2
+  power = abs(W.d1d2)
+  ## Bias-corrected cross-wavelet
+  W.d1d2.corr=(wt1$wave*Conj(wt2$wave)*max(wt1$period))/matrix(rep(wt1$period, length(t)), nrow=NROW(wt1$period))
+  ## Bias-corrected power
+  power.corr = abs(W.d1d2.corr)
   ## Phase difference
   phase=atan2(Im(W.d1d2), Re(W.d1d2))
   ## Generate two null time series with the same AR(1) coefficient as observed data
@@ -72,7 +76,9 @@ function (d1, d2, pad=TRUE, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   
   results=list(coi=coi, 
                wave=W.d1d2,
+               wave.corr=W.d1d2.corr,
                power=power,
+               power.corr=power.corr,
                phase=phase,
                period=wt1$period, 
                scale=wt1$scale, 

@@ -15,12 +15,17 @@ wavelet analyses.
 \tabular{ll}{
 Package: \tab biwavelet\cr
 Type: \tab Package\cr
-Version: \tab 0.1\cr
-Date: \tab 2012-04-19\cr
+Version: \tab 0.14\cr
+Date: \tab 2013-03-06\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes\cr
 }
-Univariate and bivariate wavelet analyses
+As of biwavelet version 0.14, the bias-corrected wavelet and cross-wavelet spectra 
+are automatically computed and plotted by default using the methods 
+described by Liu et al. (2007) and Veleda et al. (2012). This correction
+is needed because the traditional approach for computing the power spectrum 
+(e.g., Torrence and Compo 1998) leads to an artificial and systematic reduction 
+in power at lower periods.
 }
 \author{
 Tarik C. Gouhier
@@ -39,6 +44,10 @@ Grinsted, A., J. C. Moore, and S. Jevrejeva. 2004. Application of the cross
 wavelet transform and wavelet coherence to geophysical time series. 
 \emph{Nonlinear Processes in Geophysics} 11:561-566.
 
+Liu, Y., X. San Liang, and R. H. Weisberg. 2007. Rectification of the Bias in 
+the Wavelet Power Spectrum. \emph{Journal of Atmospheric and Oceanic Technology} 
+24:2093-2102.
+
 Rouyer, T., J. M. Fromentin, F. Menard, B. Cazelles, K. Briand, R. Pianet, 
 B. Planque, and N. C. Stenseth. 2008. Complex interplays among population 
 dynamics, environmental forcing, and exploitation in fisheries. 
@@ -54,12 +63,52 @@ Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis.
 Torrence, C., and P. J. Webster. 1998. The annual cycle of persistence in the 
 El Nino/Southern Oscillation. 
 \emph{Quarterly Journal of the Royal Meteorological Society} 124:1985-2004.
+
+Veleda, D., R. Montagne, and M. Araujo. 2012. Cross-Wavelet Bias Corrected by Normalizing Scales. 
+\emph{Journal of Atmospheric and Oceanic Technology} 29:1401-1408.
 }
 \keyword{ wavelet }
 \keyword{ wavelet coherence }
 \keyword{ cross-wavelet }
 
 \examples{
+## As of biwavelet version 0.14, the bias-corrected wavelet and cross-wavelet spectra 
+## are automatically computed and plotted by default using the methods 
+## described by Liu et al. (2007) and Veleda et al. (2012). This correction
+## is needed because the traditional approach for computing the power spectrum 
+## (e.g., Torrence and Compo 1998) leads to an artificial and systematic reduction 
+## in power at low periods.
+
+## EXAMPLE OF BIAS CORRECTION:
+require(biwavelet)
+## Generate a synthetic time series 's' with the same power at three distinct periods
+t1=sin(seq(from=0, to=2*5*pi, length=1000))
+t2=sin(seq(from=0, to=2*15*pi, length=1000))
+t3=sin(seq(from=0, to=2*40*pi, length=1000))
+s=t1+t2+t3
+
+## Compare non-corrected vs. corrected wavelet spectrum
+wt1=wt(cbind(1:1000, s))
+par(mfrow=c(1,2))
+plot(wt1, type="power.corr.norm", main="Bias-corrected")
+plot(wt1, type="power.norm", main="Not-corrected")
+
+## Compare non-corrected vs. corrected cross-wavelet spectrum
+x1=xwt(cbind(1:1000, s), cbind(1:1000, s))
+par(mfrow=c(1,2))
+plot(x1, type="power.corr.norm", main="Bias-corrected")
+plot(x1, type="power.norm", main="Not-corrected")
+
+## Compare non-corrected vs. corrected wavelet coherence
+t1=cbind(1:100, rnorm(100))
+t2=cbind(1:100, rnorm(100))
+## Wavelet coherence
+wtc.t1t2=wtc(t1, t2, nrands=10)
+par(mfrow=c(1,2))
+plot(wtc.t1t2, type="power.corr", plot.cb=TRUE, main="Bias-corrected")
+plot(wtc.t1t2, type="power.corr.norm", plot.cb=TRUE, main="Not-corrected")
+
+## ADDITIONAL EXAMPLES
 t1=cbind(1:100, rnorm(100))
 t2=cbind(1:100, rnorm(100))
 ## Continuous wavelet transform

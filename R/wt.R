@@ -23,18 +23,21 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
     t = 1:length(x)
     xaxis = t
   }  
-  n.obs = length(x)
+  
+  n.obs = NROW(x)
   if (is.null(J1)) {
     if (is.null(max.scale)) {
       max.scale=(n.obs * 0.17) * 2 * dt ## automaxscale
     }
     J1=round(log2(max.scale / s0) / dj)
   }
+
   if (pad) {
     base2 = floor(log(n.obs) / log(2) + 0.5)
     x = c(x, rep(0, times=2^(base2 + 1) - n.obs))
   }
-  n=length(x)
+  
+  n=NROW(x)
   k = seq(1, floor(n / 2), 1)
   k = k * ((2 * pi)/(n * dt))
   k = c(0, k, -k[seq(floor(( n - 1) / 2), 1, -1)])
@@ -51,9 +54,11 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   period = wb$fourier.factor * scale
   coi = wb$coi * dt * c(1e-5, seq(1, (n.obs + 1) / 2 - 1), 
                         seq(floor(n.obs / 2 - 1), 1, -1),
-                        1e-5)
+                        1e-5)  
   wave = wave[, 1:n.obs] ## Get rid of padding before returning
+  power.corr=(abs(wave)^2*max.scale)/matrix(rep(period, length(t)), nrow=NROW(period))
   power = abs(wave)^2
+  
   phase=atan2(Im(wave), Re(wave))
   sigma2 = var(x)
   if (do.sig) {
@@ -69,6 +74,7 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   results=list(coi=coi, 
                wave=wave,
                power=power,
+               power.corr=power.corr,
                phase=phase,
                period=period,
                scale=scale, 

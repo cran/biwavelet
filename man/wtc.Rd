@@ -47,7 +47,7 @@ nondimensional parameter specific to the wavelet function.
 vector containing the AR(1) coefficient of each time series.
 }
   \item{sig.level}{
-significance level. Default is 0.95.
+significance level. Default is \code{0.95}.
 }
   \item{sig.test}{
 type of significance test. If set to 0, use a regular \eqn{\chi^2} test. 
@@ -63,7 +63,11 @@ Return a \code{biwavelet} object containing:
 
 \item{coi }{matrix containg cone of influence}
 \item{wave }{matrix containing the cross-wavelet transform}
+\item{wave.corr }{matrix containing the bias-corrected cross-wavelet transform
+using the method described by \code{Veleda et al. (2012)}}
 \item{power }{matrix of power}
+\item{power.corr }{matrix of bias-corrected cross-wavelet power using the method described 
+by \code{Veleda et al. (2012)}}
 \item{rsq }{matrix of wavelet coherence}
 \item{phase }{matrix of phases}
 \item{period }{vector of periods}
@@ -77,7 +81,8 @@ Return a \code{biwavelet} object containing:
 \item{d2.sigma }{standard deviation of time series 2}
 \item{mother }{mother wavelet used}
 \item{type }{type of \code{biwavelet} object created (\code{wtc})}
-\item{signif }{matrix containg significance levels}
+\item{signif }{matrix containg \code{sig.level} percentiles of wavelet coherence
+based on the Monte Carlo AR(1) time series}
 }
 
 \references{
@@ -95,8 +100,10 @@ Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis.
 Torrence, C., and P. J. Webster. 1998. The annual cycle of persistence in the 
 El Nino/Southern Oscillation. 
 \emph{Quarterly Journal of the Royal Meteorological Society} 124:1985-2004.
-}
 
+Veleda, D., R. Montagne, and M. Araujo. 2012. Cross-Wavelet Bias Corrected by Normalizing Scales. 
+\emph{Journal of Atmospheric and Oceanic Technology} 29:1401-1408.
+}
 \note{
 The Monte Carlo randomizations can be extremely slow for large datasets. 
 For instance, 1000 randomizations of a dataset consisting of 1000 samples 

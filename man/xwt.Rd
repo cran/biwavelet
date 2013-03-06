@@ -61,7 +61,11 @@ Returns a \code{biwavelet} object containing:
 
 \item{coi }{matrix containg cone of influence}
 \item{wave }{matrix containing the cross-wavelet transform}
+\item{wave.corr }{matrix containing the bias-corrected cross-wavelet transform
+using the method described by \code{Veleda et al. (2012)}}
 \item{power }{matrix of power}
+\item{power.corr }{matrix of bias-corrected cross-wavelet power using the method described 
+by \code{Veleda et al. (2012)}}
 \item{phase }{matrix of phases}
 \item{period }{vector of periods}
 \item{scale }{vector of scales}
@@ -92,6 +96,9 @@ Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis.
 Torrence, C., and P. J. Webster. 1998. The annual cycle of persistence in the 
 El Nino/Southern Oscillation. 
 \emph{Quarterly Journal of the Royal Meteorological Society} 124:1985-2004.
+
+Veleda, D., R. Montagne, and M. Araujo. 2012. Cross-Wavelet Bias Corrected by Normalizing Scales. 
+\emph{Journal of Atmospheric and Oceanic Technology} 29:1401-1408.
 }
 \author{
 Tarik C. Gouhier (tarik.gouhier@gmail.com)

@@ -8,12 +8,12 @@ Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coheren
 }
 \usage{
 \method{plot}{biwavelet} (x, ncol = 64, xlab = "Time", ylab = "Period",
-               sig.level = 0.95, plot.cb = FALSE, plot.phase = FALSE, 
-               type = c("power.norm", "power", "wavelet", "phase"), 
-               plot.coi = TRUE, plot.sig = TRUE, bw = FALSE, 
+               tol = 0.95, plot.cb = FALSE, plot.phase = FALSE, 
+               type=c("power.corr.norm", "power.corr", "power.norm", "power", 
+               "wavelet", "phase"), plot.coi = TRUE, plot.sig = TRUE, bw = FALSE, 
                legend.loc = NULL, legend.horiz = FALSE, 
                arrow.size = 0.08, arrow.lwd = 2, arrow.cutoff = 0.9, 
-               xlim = NULL, ylim = NULL, xtick = TRUE, ytick = TRUE, 
+               xlim = NULL, ylim = NULL, xaxt = "s", yaxt = "s", 
                form='\%Y', \dots)
 }
 \arguments{
@@ -29,9 +29,10 @@ xlabel of the figure. Default is "Time"
   \item{ylab}{
 ylabel of the figure. Default is "Period"
 }
-
-  \item{sig.level}{
-significance level for contours. Default is 0.95.
+  \item{tol}{
+tolerance level for significance contours. Sigificance contours will be drawn around all regions
+of the spectrum where \code{spectrum/percentile >= tol}. Default is \code{0.95}. If strict
+\code{i^{th}} percentile regions are desired, then set \code{tol=1}.
 }
   \item{plot.cb}{
 plot color bar if TRUE. Default is FALSE.
@@ -40,9 +41,11 @@ plot color bar if TRUE. Default is FALSE.
 Plot phases with black arrows. Default is FALSE.
 }
   \item{type}{
-type of plot to create. Can be \code{power} to plot the power, \code{power.norm}
-to plot the power normalized by the variance, \code{wavelet} to plot the 
-wavelet coefficients, or \code{phase} to plot the phase. Default is power.norm.
+type of plot to create. Can be \code{power} to plot the power, \code{power.corr} to plot
+the bias-corrected power, \code{power.norm} to plot the power normalized by the variance, 
+\code{power.norm.corr} to plot the bias-corrected power normalized by the variance, 
+\code{wavelet} to plot thewavelet coefficients, or \code{phase} to plot the phase. 
+Default is \code{power.corr.norm}.
 }
   \item{plot.coi}{
 plot cone of influence (COI) if TRUE. Default is TRUE. Areas that fall outside 
@@ -76,11 +79,11 @@ quantile will not be plotted. Default is 0.9.
  \item{ylim}{ 
  the y limits. The default is \code{NULL}.
 }
- \item{xtick}{ 
- label x-axis tickmarks. The default is \code{TRUE}.
+ \item{xaxt}{ 
+ Add x-axis? The default is \code{s}; use \code{n} for none.
 }
- \item{ytick}{ 
- label y-axis tickmarks. The default is \code{TRUE}.
+ \item{yaxt}{ 
+ Add y-axis? The default is \code{s}; use \code{n} for none.
 }
 
 \item{form}{
@@ -112,6 +115,10 @@ wavelet transform and wavelet coherence to geophysical time series.
 
 Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis. 
 \emph{Bulletin of the American Meteorological Society} 79:61-78.
+
+Liu, Y., X. San Liang, and R. H. Weisberg. 2007. Rectification of the Bias in 
+the Wavelet Power Spectrum. \emph{Journal of Atmospheric and Oceanic Technology} 
+24:2093-2102.
 }
 \author{
 Tarik C. Gouhier (tarik.gouhier@gmail.com)
@@ -137,4 +144,24 @@ xwt.t1t2=xwt(t1, t2)
 ## Plot cross-wavelet
 par(oma=c(0, 0, 0, 1), mar=c(5, 4, 4, 5) + 0.1)
 plot(xwt.t1t2, plot.cb=TRUE)
+
+## Example of bias-correction
+t1=sin(seq(from=0, to=2*5*pi, length=1000))
+t2=sin(seq(from=0, to=2*15*pi, length=1000))
+t3=sin(seq(from=0, to=2*40*pi, length=1000))
+## This aggregate time series should have the same power at three distinct periods
+s=t1+t2+t3
+## Compare plots to see bias-effect on CWT: biased power spectrum artificially
+## reduces the power of higher-frequency fluctuations.
+wt1=wt(cbind(1:1000, s))
+par(mfrow=c(1,2))
+plot(wt1, type="power.corr.norm", main="Bias-corrected")
+plot(wt1, type="power.norm", main="Biased")
+
+## Compare plots to see bias-effect on XWT: biased power spectrum artificially
+## reduces the power of higher-frequency fluctuations.
+x1=xwt(cbind(1:1000, s), cbind(1:1000, s))
+par(mfrow=c(1,2))
+plot(x1, type="power.corr.norm", main="Bias-corrected")
+plot(x1, type="power.norm", main="Biased")
 }

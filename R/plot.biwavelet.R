@@ -1,13 +1,13 @@
 plot.biwavelet <-
   function (x, ncol=64, xlab="Time", ylab="Period", 
-            sig.level=0.95, plot.cb=FALSE, plot.phase=FALSE,
-            type=c("power.norm", "power", "wavelet", "phase"), 
+            tol=0.95, plot.cb=FALSE, plot.phase=FALSE,
+            type=c("power.corr.norm", "power.corr", "power.norm", "power", "wavelet", "phase"), 
             plot.coi=TRUE, plot.sig=TRUE, bw=FALSE,
             legend.loc=NULL, 
             legend.horiz=FALSE,
             arrow.size=0.08,
             arrow.lwd=2, arrow.cutoff=0.9, xlim = NULL, ylim = NULL,
-            xtick = TRUE, ytick = TRUE, form='%Y', ...) {
+            xaxt = "s", yaxt = "s", form='%Y', ...) {
     if (bw) {
       bw.colors <- colorRampPalette(c("black", "white"))
       fill.colors=bw.colors(ncol)
@@ -20,12 +20,25 @@ plot.biwavelet <-
     }
     yrange=ylim
     y.ticks = 2^(floor(log2(min(x$period, yrange))):floor(log2(max(x$period, yrange))))
-    types=c("power.norm", "power", "wavelet", "phase")
+    types=c("power.corr.norm", "power.corr", "power.norm", "power", "wavelet", "phase")
     type=match.arg(tolower(type), types)
     
-    if (type=="power.norm") {
+    if (type=="power.corr" | type=="power.corr.norm") {
+      if (x$type=="wtc") {
+        x$wave=x$wave.corr
+        x$power=x$power.corr
+      }
+      else if (x$type=="xwt") {
+        x$power=x$power.corr
+        x$wave=x$wave.corr
+      }
+      else
+        x$power=x$power.corr
+    }
+    
+    if (type=="power.norm" | type=="power.corr.norm") {
       if (x$type == "xwt") {
-        zvals=log2(abs(x$wave / (x$d1.sigma * x$d2.sigma)))
+        zvals=log2(x$power)/(x$d1.sigma*x$d2.sigma)
         zlims=range(c(-1, 1) * max(zvals))
         zvals [zvals < zlims[1]]=zlims[1]
         locs=pretty(range(zvals), n=5)
@@ -46,7 +59,7 @@ plot.biwavelet <-
         leg.lab=2^locs
       }
     }
-    else if (type=="power") {
+    else if (type=="power"| type=="power.corr") {
       zvals=log2(x$power)
       zlims=range(c(-1, 1)*max(zvals))
       zvals [zvals < zlims[1]]=zlims[1]
@@ -66,7 +79,7 @@ plot.biwavelet <-
       leg.lab=locs        
     }
     else {
-      stop("type must be power, power.norm, wavelet or phase")
+      stop("type must be power, power.norm, power.corr, power.corr.norm, wavelet or phase")
     }
     if (is.null(xlim))
       xlim=range(x$t)
@@ -88,27 +101,22 @@ plot.biwavelet <-
           col=fill.colors, ...)
     box()
     if (class(x$xaxis) == "Date") {
+      if (xaxt!="n") {
         xlocs=pretty(x$t)+1
-      if (xtick)
-        lab=format(x$xaxis[xlocs], form)
-      else
-        lab=NA
-      axis(side=1, at=xlocs, labels=lab)
+        axis(side=1, at=xlocs, labels=format(x$xaxis[xlocs], form))
+      }
     }
     else {
+      if (xaxt!="n") {
         xlocs=axTicks(1)
-      if (xtick)
-        xticklab=xlocs
-      else
-        xticklab=NA
-      axis(side=1, at=xlocs, labels=xticklab)
+        axis(side=1, at=xlocs)        
+      }
     }
-    axis.locs=axTicks(2)
-    if (ytick)
+    if (yaxt!="n") {
+      axis.locs=axTicks(2)
       yticklab=format(2^axis.locs, dig=1)
-    else
-      yticklab=NA
-    axis(2, at=axis.locs, labels=yticklab)
+      axis(2, at=axis.locs, labels=yticklab)
+    }
     
     ## Add color bar
     if (plot.cb) {
@@ -134,12 +142,13 @@ plot.biwavelet <-
     ## sig.level contour (default is 95%)
     if (plot.sig & length (x$signif) > 1) {
       if (x$type %in% c("wt", "xwt")) {
-        contour(x$t, yvals, t(x$signif), level=sig.level, col="black", lwd=4, 
+        contour(x$t, yvals, t(x$signif), level=tol, col="black", lwd=4, 
                 add=TRUE, drawlabels=FALSE)
       }
       else {
-        contour(x$t, yvals, t(x$signif), nlevel=1, col="black", lwd=4, 
-                add=TRUE, drawlabels=FALSE)
+        tmp=x$rsq/x$signif
+         contour(x$t, yvals, t(tmp), level=tol, col="black", lwd=4, 
+                 add=TRUE, drawlabels=FALSE)
       }
     }
     ## Plot phases
