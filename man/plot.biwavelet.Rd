@@ -10,9 +10,11 @@ Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coheren
 \method{plot}{biwavelet} (x, ncol = 64, xlab = "Time", ylab = "Period",
                tol = 0.95, plot.cb = FALSE, plot.phase = FALSE, 
                type=c("power.corr.norm", "power.corr", "power.norm", "power", 
-               "wavelet", "phase"), plot.coi = TRUE, plot.sig = TRUE, bw = FALSE, 
-               legend.loc = NULL, legend.horiz = FALSE, 
-               arrow.size = 0.08, arrow.lwd = 2, arrow.cutoff = 0.9, 
+               "wavelet", "phase"), 
+               plot.coi = TRUE, lwd.coi=4, col.coi="white", lty.coi=2,
+               plot.sig = TRUE, lwd.sig=4, col.sig="black", lty.sig=1,
+               bw = FALSE, legend.loc = NULL, legend.horiz = FALSE, 
+               arrow.size = 0.08, arrow.lwd = 2, arrow.cutoff = 0.9, arrow.col="black",
                xlim = NULL, ylim = NULL, xaxt = "s", yaxt = "s", 
                form='\%Y', \dots)
 }
@@ -43,7 +45,7 @@ Plot phases with black arrows. Default is FALSE.
   \item{type}{
 type of plot to create. Can be \code{power} to plot the power, \code{power.corr} to plot
 the bias-corrected power, \code{power.norm} to plot the power normalized by the variance, 
-\code{power.norm.corr} to plot the bias-corrected power normalized by the variance, 
+\code{power.corr.norm} to plot the bias-corrected power normalized by the variance, 
 \code{wavelet} to plot thewavelet coefficients, or \code{phase} to plot the phase. 
 Default is \code{power.corr.norm}.
 }
@@ -51,8 +53,26 @@ Default is \code{power.corr.norm}.
 plot cone of influence (COI) if TRUE. Default is TRUE. Areas that fall outside 
 of the COI can be affected by edge effects.
 }
+  \item{lwd.coi}{
+Line width of COI. Default is 4.
+}
+  \item{col.coi}{
+Color of cone of COI. Default is \code{white}.
+}
+  \item{lty.coi}{
+Line type of COI
+}
   \item{plot.sig}{
 plot contours for significance if TRUE. Default is TRUE.
+}
+  \item{lwd.sig}{
+Line width of significance contours. Default is 4.
+}
+  \item{col.sig}{
+Color of significance contours. Default is \code{black}.
+}
+  \item{lty.sig}{
+Line type of significance contours. Default is 1.
 }
   \item{bw}{
 plot in black and white if TRUE. Default is FALSE.
@@ -72,6 +92,9 @@ width/thickness of arrows. Default is 2.
   \item{arrow.cutoff}{
 cutoff value for plotting arrows. z-values that fall below the \code{arrow.cutoff}
 quantile will not be plotted. Default is 0.9.
+}
+  \item{arrow.col}{
+Color of arrows. Default is \code{black}.
 }
  \item{xlim}{ 
  the x limits. The default is \code{NULL}.

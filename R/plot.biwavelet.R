@@ -2,11 +2,13 @@ plot.biwavelet <-
   function (x, ncol=64, xlab="Time", ylab="Period", 
             tol=0.95, plot.cb=FALSE, plot.phase=FALSE,
             type=c("power.corr.norm", "power.corr", "power.norm", "power", "wavelet", "phase"), 
-            plot.coi=TRUE, plot.sig=TRUE, bw=FALSE,
+            plot.coi=TRUE, lwd.coi=4, col.coi="white", lty.coi=2,
+            plot.sig=TRUE, lwd.sig=4, col.sig="black", lty.sig=1,
+            bw=FALSE,
             legend.loc=NULL, 
             legend.horiz=FALSE,
-            arrow.size=0.08,
-            arrow.lwd=2, arrow.cutoff=0.9, xlim = NULL, ylim = NULL,
+            arrow.size=0.08, arrow.lwd=2, arrow.cutoff=0.9, arrow.col="black", 
+            xlim = NULL, ylim = NULL,
             xaxt = "s", yaxt = "s", form='%Y', ...) {
     if (bw) {
       bw.colors <- colorRampPalette(c("black", "white"))
@@ -100,7 +102,7 @@ plot.biwavelet <-
           xaxt="n",
           col=fill.colors, ...)
     box()
-    if (class(x$xaxis) == "Date") {
+    if (class(x$xaxis)[1] == "Date" | class(x$xaxis)[1] == "POSIXct") {
       if (xaxt!="n") {
         xlocs=pretty(x$t)+1
         axis(side=1, at=xlocs, labels=format(x$xaxis[xlocs], form))
@@ -138,16 +140,16 @@ plot.biwavelet <-
     }
     ## COI
     if (plot.coi)
-      lines(x$t, log2(x$coi), lty=2, lwd=4, col="white")
+      lines(x$t, log2(x$coi), lty=lty.coi, lwd=lwd.coi, col=col.coi)
     ## sig.level contour (default is 95%)
     if (plot.sig & length (x$signif) > 1) {
       if (x$type %in% c("wt", "xwt")) {
-        contour(x$t, yvals, t(x$signif), level=tol, col="black", lwd=4, 
+        contour(x$t, yvals, t(x$signif), level=tol, col=col.sig, lwd=lwd.sig, 
                 add=TRUE, drawlabels=FALSE)
       }
       else {
         tmp=x$rsq/x$signif
-         contour(x$t, yvals, t(tmp), level=tol, col="black", lwd=4, 
+         contour(x$t, yvals, t(tmp), level=tol, col=col.sig, lwd=lwd.sig, 
                  add=TRUE, drawlabels=FALSE)
       }
     }
@@ -160,6 +162,6 @@ plot.biwavelet <-
       x.ind=seq(max(floor(x$dt/2),1), length(x$t), length.out=40)
       y.ind=seq(max(floor(1/2),1), length(x$period), length.out=50)
       phase.plot(x$t[x.ind], log2(x$period[y.ind]), a[y.ind, x.ind], 
-                 arrow.size=arrow.size, arrow.lwd=arrow.lwd)    
+                 arrow.size=arrow.size, arrow.lwd=arrow.lwd, arrow.col=arrow.col)    
     }
   }

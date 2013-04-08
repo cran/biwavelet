@@ -1,5 +1,15 @@
 ChangeLog for package biwavelet
 
+Changes in biwavelet version 0.15 (2013-04-08)}
+added:
+   - Users can now specify the color, line width and line type for
+     the COI, significance contours and phase arrows using the plot function.
+fixed: 
+   - Removed misleading examples showing how to compute the 'bias-corrected' wavelet
+     coherence. There is no bias for the wavelet coherence function, so using the 
+     default type argument in the plot function is recommended.
+   - Fixed typos in the documentation of plot.biwavelet and xwt (thanks Lei Cheng) 
+
 changes in version 0.14 (2013-03-06)
 added:
   - As of biwavelet version 0.14, the bias-corrected wavelet and
@@ -11,4 +21,3 @@ added:
 fixed:
   - Plotting function now accepts traditional plotting flags such as xaxt and yaxt
     to control x and y tickmarks
-

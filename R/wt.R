@@ -7,7 +7,7 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   mother=match.arg(tolower(mother), mothers)
 
   if (is.null(dt) & NCOL(d) > 1) {
-    if (class(d[,1])=="Date") {
+    if (class(d[,1])[1]=="Date" | class(d[,1])[1]=="POSIXct") {
       t = 1:NROW(d)
       dt = 1
     }

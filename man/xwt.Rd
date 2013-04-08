@@ -38,7 +38,7 @@ maximum scale. Computed automatically if left unspecified.
 }
   \item{mother}{
 type of mother wavelet function to use. Can be set to \code{morlet}, \code{dog}, 
-or \code{paul}. Default is \code{mother}. Significance testing is only available
+or \code{paul}. Default is \code{morlet}. Significance testing is only available
 for \code{morlet} wavelet.
 }
   \item{param}{

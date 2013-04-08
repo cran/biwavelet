@@ -6,7 +6,7 @@ function (d1, d2, pad=TRUE, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   mother=match.arg(tolower(mother), mothers)
   
   if (NCOL(d1) > 1) {
-    if (class(d1[,1])=="Date") {
+    if (class(d1[,1])[1]=="Date" | class(d1[,1])[1]=="POSIXct") {
       t = 1:NROW(d1)
       dt = 1
       dt.t2 = 1

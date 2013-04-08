@@ -7,7 +7,7 @@ wtc <-
     mother=match.arg(tolower(mother), mothers)
     
     if (NCOL(d1) > 1) {
-      if (class(d1[,1])=="Date") {
+      if (class(d1[,1])[1]=="Date" | class(d1[,1])[1]=="POSIXct") {
         t = 1:NROW(d1)
         dt = 1
         dt.t2 = 1
@@ -64,11 +64,9 @@ wtc <-
     ## Power
     power=abs(CW)^2
     ## Bias-corrected power
-    power.corr = (abs(CW)^2*max.scale)/matrix(rep(wt1$period, length(t)), nrow=NROW(wt1$period))
-    
+    power.corr = (abs(CW)^2*max.scale)/matrix(rep(wt1$period, length(t)), nrow=NROW(wt1$period))    
     ## Wavelet coherence
     smooth.CW=smooth.wavelet(s.inv * (CW), dt, dj, wt1$scale)
-    smooth.CW.corr=smooth.wavelet(s.inv * (CW.corr), dt, dj, wt1$scale)
     rsq=abs(smooth.CW)^2 / (smooth.wt1 * smooth.wt2)
     ## Phase difference
     phase=atan2(Im(CW), Re(CW))

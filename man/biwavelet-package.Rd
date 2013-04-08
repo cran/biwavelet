@@ -99,15 +99,6 @@ par(mfrow=c(1,2))
 plot(x1, type="power.corr.norm", main="Bias-corrected")
 plot(x1, type="power.norm", main="Not-corrected")
 
-## Compare non-corrected vs. corrected wavelet coherence
-t1=cbind(1:100, rnorm(100))
-t2=cbind(1:100, rnorm(100))
-## Wavelet coherence
-wtc.t1t2=wtc(t1, t2, nrands=10)
-par(mfrow=c(1,2))
-plot(wtc.t1t2, type="power.corr", plot.cb=TRUE, main="Bias-corrected")
-plot(wtc.t1t2, type="power.corr.norm", plot.cb=TRUE, main="Not-corrected")
-
 ## ADDITIONAL EXAMPLES
 t1=cbind(1:100, rnorm(100))
 t2=cbind(1:100, rnorm(100))

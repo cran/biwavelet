@@ -7,7 +7,7 @@ Plot phases
 Plot phases with arrows
 }
 \usage{
-phase.plot (x, y, phases, arrow.size = 0.05, arrow.lwd = 2)
+phase.plot (x, y, phases, arrow.size = 0.05, arrow.lwd = 2, arrow.col="black")
 }
 \arguments{
   \item{x}{
@@ -20,10 +20,13 @@ y-coordinates
 phases
 }
   \item{arrow.size}{
-arrow size
+arrow size. Default is 0.05
 }
   \item{arrow.lwd}{
-arrow line width
+arrow line width. Default is 2.
+}
+  \item{arrow.col}{
+arrow line color. Default is \code{black}.
 }
 }
 \author{
