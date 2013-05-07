@@ -1,6 +1,18 @@
 \name{NEWS}
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
+\section{Changes in biwavelet version 0.16 (2013-05-07)}{
+  \subsection{added}{
+    \itemize{
+      \item Users can now specify the density of the phase arrows using the \code{plot} function.
+    }
+  }
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed bug in wt affecting the significance region (thanks Patrick Kilduff and Flora Cordoleani).
+    }
+  }
+}
 \section{Changes in biwavelet version 0.15 (2013-04-08)}{
   \subsection{added}{
     \itemize{

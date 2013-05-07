@@ -1,5 +1,10 @@
 ChangeLog for package biwavelet
 
+Changes in biwavelet version 0.16 (2013-05-07)
+added:
+   - Users can now specify the density of the phase arrows using the plot function.
+fixed:
+   - Fixed bug in wt affecting the significance region (thanks Patrick Kilduff and Flora Cordoleani)
 Changes in biwavelet version 0.15 (2013-04-08)}
 added:
    - Users can now specify the color, line width and line type for

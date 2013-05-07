@@ -1,6 +1,6 @@
 wtc.sig <-
 function (nrands=300, lag1, dt, ntimesteps, pad=TRUE, dj=1/12, s0, J1, max.scale=NULL,
-          mother=c("morlet", "paul", "dog"), sig.level=0.95) {
+          mother=c("morlet", "paul", "dog"), sig.level=0.95, quiet=FALSE) {
   
   mothers=c("morlet", "paul", "dog")
   mother=match.arg(tolower(mother), mothers)
@@ -19,7 +19,9 @@ function (nrands=300, lag1, dt, ntimesteps, pad=TRUE, dj=1/12, s0, J1, max.scale
   }
   else {
     rand.rsq=array(dim=c(NROW(wt1$wave), NCOL(wt1$wave), nrands), NA)
-    prog.bar=txtProgressBar(min = 0, max = nrands, style = 3)
+    if (!quiet) {
+      prog.bar=txtProgressBar(min = 0, max = nrands, style = 3)
+    }
     for (r in 1:nrands) {
       ## Generate time series
       d1 = arima.sim(model = list(ar = lag1[1], ma = 0), n = ntimesteps)
@@ -36,7 +38,8 @@ function (nrands=300, lag1, dt, ntimesteps, pad=TRUE, dj=1/12, s0, J1, max.scale
       rand.rsq[, , r]=abs(smooth.CW)^2/
         (smooth.wavelet(s.inv * (abs(wt1$wave)^2), dt , dj, wt1$scale) *
            smooth.wavelet(s.inv * (abs(wt2$wave)^2), dt, dj, wt2$scale))
-      setTxtProgressBar(prog.bar, r)
+      if (!quiet)
+        setTxtProgressBar(prog.bar, r)
     }
     wtcsig=apply(rand.rsq, MARGIN=c(1,2), quantile, sig.level)
   }

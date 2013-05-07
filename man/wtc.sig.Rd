@@ -8,7 +8,8 @@ Determine significance of wavelet coherence
 }
 \usage{
 wtc.sig (nrands = 300, lag1, dt, ntimesteps, pad = TRUE, dj = 1/12, s0, J1, 
-         max.scale=NULL, mother = c("morlet", "paul", "dog"), sig.level = 0.95)
+         max.scale=NULL, mother = c("morlet", "paul", "dog"), sig.level = 0.95,
+         quiet = FALSE)
 }
 \arguments{
   \item{nrands}{
@@ -43,6 +44,8 @@ or \code{paul}. Default is \code{morlet}. Significance testing is only available
 for \code{morlet} wavelet.
 }
 \item{sig.level}{ significance level to compute. Default is \code{0.95} }
+
+\item{quiet}{ Do not display progress bar. Default is \code{FALSE} }
 
 }
 \value{

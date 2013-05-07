@@ -15,6 +15,8 @@ Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coheren
                plot.sig = TRUE, lwd.sig=4, col.sig="black", lty.sig=1,
                bw = FALSE, legend.loc = NULL, legend.horiz = FALSE, 
                arrow.size = 0.08, arrow.lwd = 2, arrow.cutoff = 0.9, arrow.col="black",
+               arrow.nlocs.x = round(length(x$period)/2), 
+               arrow.nlocs.y = round(NCOL(x$wave)/2),
                xlim = NULL, ylim = NULL, xaxt = "s", yaxt = "s", 
                form='\%Y', \dots)
 }
@@ -96,6 +98,12 @@ quantile will not be plotted. Default is 0.9.
   \item{arrow.col}{
 Color of arrows. Default is \code{black}.
 }
+  \item{arrow.nlocs.x}{
+Integer number of x- or time-locations where phase arrows should be plotted. Default is 1/2 of the time-locations
+  }
+  \item{arrow.nlocs.y}{
+Integer number of y- or period-locations where phase arrows should be plotted. Default is 1/2 of the period-locations
+  }
  \item{xlim}{ 
  the x limits. The default is \code{NULL}.
 }

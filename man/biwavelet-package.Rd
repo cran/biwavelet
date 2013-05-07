@@ -15,8 +15,8 @@ wavelet analyses.
 \tabular{ll}{
 Package: \tab biwavelet\cr
 Type: \tab Package\cr
-Version: \tab 0.14\cr
-Date: \tab 2013-03-06\cr
+Version: \tab 0.16\cr
+Date: \tab 2016-05-07\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes\cr
 }

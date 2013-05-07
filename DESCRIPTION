@@ -1,8 +1,8 @@
 Package: biwavelet
 Type: Package
 Title: Conduct univariate and bivariate wavelet analyses
-Version: 0.15
-Date: 2013-04-08
+Version: 0.16
+Date: 2013-05-07
 Author: Tarik C. Gouhier, Aslak Grinsted
 Maintainer: Tarik C. Gouhier <tarik.gouhier@gmail.com>
 Imports: fields
@@ -16,9 +16,9 @@ URL: http://biwavelet.r-forge.r-project.org
 LazyLoad: yes
 Repository: CRAN
 Repository/R-Forge/Project: biwavelet
-Repository/R-Forge/Revision: 64
-Repository/R-Forge/DateTimeStamp: 2013-04-12 20:28:55
-Date/Publication: 2013-04-23 21:21:44
-Packaged: 2013-04-12 22:15:46 UTC; rforge
+Repository/R-Forge/Revision: 67
+Repository/R-Forge/DateTimeStamp: 2013-05-11 21:56:57
+Date/Publication: 2013-05-18 19:39:21
+Packaged: 2013-05-14 10:15:35 UTC; rforge
 Depends: R (>= 2.10)
 NeedsCompilation: no

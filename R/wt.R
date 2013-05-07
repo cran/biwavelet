@@ -17,10 +17,12 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
     }
     xaxis = d[, 1]
     x = d[, 2] - mean(d[, 2])
+    sigma2 = var(d[,2])
   }
   else {
     x = d - mean(d)
     t = 1:length(x)
+    sigma2 = var(d)
     xaxis = t
   }  
   
@@ -60,7 +62,6 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
   power = abs(wave)^2
   
   phase=atan2(Im(wave), Re(wave))
-  sigma2 = var(x)
   if (do.sig) {
     signif = wt.sig (d=x, dt=dt, scale=scale, sig.test=sig.test, 
                      sig.level=sig.level, lag1=lag1, dof=-1, 

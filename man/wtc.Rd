@@ -9,7 +9,7 @@ Compute wavelet coherence
 \usage{
 wtc (d1, d2, pad = TRUE, dj = 1/12, s0 = 2 * dt, J1 = NULL, 
      max.scale = NULL, mother = c("morlet", "paul", "dog"), param = -1, 
-     lag1 = NULL, sig.level = 0.95, sig.test = 0, nrands = 300)
+     lag1 = NULL, sig.level = 0.95, sig.test = 0, nrands = 300, quiet = FALSE)
 }
 \arguments{
   \item{d1}{
@@ -57,6 +57,9 @@ test.
   \item{nrands}{
 number of Monte Carlo randomizations. Default is 300.
 }
+
+\item{quiet}{ Do not display progress bar. Default is \code{FALSE} }
+
 }
 \value{
 Return a \code{biwavelet} object containing:
