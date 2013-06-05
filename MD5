@@ -1,9 +1,9 @@
-472d4fbdafda91d47db7f6265c615043 *ChangeLog
-e44cd82b4d1ec6b711a6a853d445f59d *DESCRIPTION
+3c5de03dd9cf9f668df6c0ee688077e0 *ChangeLog
+a90a1caf1a59172bf0d548577b47751d *DESCRIPTION
 ae6d84065ce3f0422189de7c1bbb9d12 *NAMESPACE
 49a4b426fb92014b0ccbddacd205710e *R/ar1.spectrum.R
 d64a9d157938032ca7353633203c26d6 *R/biwavelet-internal.R
-8088cd64cec854607aa6eb3df6941238 *R/check.data.R
+ddd11b88fbcbdd30b4bc013c99b50e3c *R/check.data.R
 8a7eb2aebca65a6938c217eee99e555b *R/convolve2D.R
 472113b64c1485f135fc414d5892f9ed *R/meshgrid.R
 f11ff74bc9f584ee48a775a9335a5afc *R/phase.plot.R
@@ -21,9 +21,9 @@ ec3321386658a4e288997941821e260a *R/xwt.R
 1b3bcb66d3de49b71dde55c227cc2b81 *R/zzz.R
 65b8d7072b784804ae26610d4ab38dd1 *data/enviro.data.RData
 16741377349457afeab6d3df6e529fbc *inst/CITATION
-01c3c5467ac44fd4dce208c811f6b59d *inst/NEWS.Rd
+fa8f910d1bf6b6d51ad47c035e2bb6fe *inst/NEWS.Rd
 4724ffd81c6a2119beb38977c54458cc *man/ar1.spectrum.Rd
-b833e0bc7bcc5351bf99b7813ac30dd0 *man/biwavelet-package.Rd
+34daea1c6eee6c08bff8eca7fe3215a0 *man/biwavelet-package.Rd
 17535a164d0fe6ebbdf340798335a522 *man/check.data.Rd
 161837bc7264cb1d7ffd964e73167d8a *man/convolve2D.Rd
 ad949d70a9faaa9340c4dd07073aca92 *man/enviro.data.Rd

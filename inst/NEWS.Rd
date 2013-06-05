@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
+
+\section{Changes in biwavelet version 0.17.1 (2013-07-15)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Fixed code in \code{check.data} to test for constant step size in the data.}
+    }
+}
+
 \section{Changes in biwavelet version 0.17 (2013-06-05)}{
   \subsection{added}{
     \itemize{
@@ -17,7 +25,7 @@
   }
   \subsection{fixed}{
     \itemize{
-      \item Fixed bug in wt affecting the significance region (thanks Patrick Kilduff and Flora Cordoleani).
+      \item Fixed bug in \code{wt} affecting the significance region (thanks Patrick Kilduff and Flora Cordoleani).
     }
   }
 }

@@ -1,5 +1,9 @@
 ChangeLog for package biwavelet
 
+Changes in biwavelet version 0.17.1 (2013-07-15)
+fixed: 
+    - Fixed code in check.data to test for constant step size in the data.
+
 Changes in biwavelet version 0.17 (2013-06-05)
 added: 
     - Function pwtc can be used to perform partial wavelet coherence between 

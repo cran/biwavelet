@@ -28,7 +28,7 @@ check.datum <- function (x) {
       dt = diff(x[, 1])[1]
       t = x[, 1]
     }    
-    if (all(diff(t)!=dt))
+    if (!all(diff(t)==dt))
       stop("The step size must be constant (see approx function to interpolate)")
   }
   else {
