@@ -5,28 +5,15 @@ function (d, pad=TRUE, dt=NULL, dj=1/12, s0=2*dt, J1=NULL, max.scale=NULL,
 
   mothers=c("morlet", "paul", "dog")
   mother=match.arg(tolower(mother), mothers)
-
-  if (is.null(dt) & NCOL(d) > 1) {
-    if (class(d[,1])[1]=="Date" | class(d[,1])[1]=="POSIXct") {
-      t = 1:NROW(d)
-      dt = 1
-    }
-    else {
-      dt = diff(d[, 1])[1]
-      t = d[, 1]
-    }
-    xaxis = d[, 1]
-    x = d[, 2] - mean(d[, 2])
-    sigma2 = var(d[,2])
-  }
-  else {
-    x = d - mean(d)
-    t = 1:length(x)
-    sigma2 = var(d)
-    xaxis = t
-  }  
+  # Check data format 
+  checked=check.datum(d)
+  n.obs = checked$n.obs
+  dt=checked$dt
+  t=checked$t
+  xaxis = d[, 1]
+  x = d[, 2] - mean(d[, 2])
+  sigma2 = var(d[,2])
   
-  n.obs = NROW(x)
   if (is.null(J1)) {
     if (is.null(max.scale)) {
       max.scale=(n.obs * 0.17) * 2 * dt ## automaxscale

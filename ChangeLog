@@ -1,10 +1,17 @@
 ChangeLog for package biwavelet
 
+Changes in biwavelet version 0.17 (2013-06-05)
+added: 
+    - Function pwtc can be used to perform partial wavelet coherence between 
+      two time series y and x1 by controlling for (or partialling-out) a third 
+      time series x2.
+ 
 Changes in biwavelet version 0.16 (2013-05-07)
 added:
    - Users can now specify the density of the phase arrows using the plot function.
 fixed:
    - Fixed bug in wt affecting the significance region (thanks Patrick Kilduff and Flora Cordoleani)
+
 Changes in biwavelet version 0.15 (2013-04-08)}
 added:
    - Users can now specify the color, line width and line type for
@@ -15,7 +22,7 @@ fixed:
      default type argument in the plot function is recommended.
    - Fixed typos in the documentation of plot.biwavelet and xwt (thanks Lei Cheng) 
 
-changes in version 0.14 (2013-03-06)
+Changes in version 0.14 (2013-03-06)
 added:
   - As of biwavelet version 0.14, the bias-corrected wavelet and
     cross-wavelet spectra are automatically computed and plotted by default

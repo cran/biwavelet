@@ -1,6 +1,14 @@
 \name{NEWS}
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
+\section{Changes in biwavelet version 0.17 (2013-06-05)}{
+  \subsection{added}{
+    \itemize{
+      \item Function \code{pwtc} can be used to perform partial wavelet coherence between two time series
+      \code{y} and \code{x1} by controlling for (or partialling-out) a third time series \code{x2}.
+    }
+  }
+}
 \section{Changes in biwavelet version 0.16 (2013-05-07)}{
   \subsection{added}{
     \itemize{

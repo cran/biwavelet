@@ -46,13 +46,14 @@ plot.biwavelet <-
         locs=pretty(range(zvals), n=5)
         leg.lab=2^locs
       }
-      else if (x$type == "wtc") {
+      else if (x$type == "wtc" | x$type == "pwtc") {
         zvals=x$rsq
-        zlims=range(zvals)
+        zvals[!is.finite(zvals)]=NA
+        zlims=range(zvals, na.rm=TRUE)
         zvals [zvals < zlims[1]]=zlims[1]
-        locs=pretty(range(zvals), n=5)
+        locs=pretty(range(zvals, na.rm=TRUE), n=5)
         leg.lab=locs
-      }
+      }      
       else {
         zvals=log2(abs(x$power / x$sigma2))
         zlims=range(c(-1, 1) * max(zvals))
