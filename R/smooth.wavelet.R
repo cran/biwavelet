@@ -19,7 +19,7 @@ function (wave, dt, dj, scale) {
     smooth=fft(F*fft(wave.pad), inverse=TRUE)/npad
     twave[ii, ]=smooth[1:m]
   }    
-  if (is.real(wave))
+  if (is.double(wave))
     twave=Re(twave)
   ## scale smoothing (boxcar with width of 0.6)
   dj0=0.6
