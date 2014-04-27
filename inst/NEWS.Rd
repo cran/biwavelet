@@ -2,6 +2,21 @@
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
 
+\section{Changes in biwavelet version 0.17.3 (2014-04-27)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Made check.datum tolerate slight inconsistencies in the size of timesteps.}
+    }
+}
+
+\section{Changes in biwavelet version 0.17.2 (2014-04-11)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Added arguments in plot.biwavelet and phase.plot to control the length
+      of the phase arrows and the size of the arrow heads independently.}
+    }
+}
+
 \section{Changes in biwavelet version 0.17.1 (2013-07-15)}{
   \subsection{fixed}{
     \itemize{

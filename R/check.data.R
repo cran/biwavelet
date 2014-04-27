@@ -1,4 +1,3 @@
-
 check.data <- function (y, x1 = NULL, x2 = NULL) {
   y=check.datum(y)
   if (!is.null(x1)) {
@@ -27,9 +26,10 @@ check.datum <- function (x) {
     else {
       dt = diff(x[, 1])[1]
       t = x[, 1]
-    }    
-    if (!all(diff(t)==dt))
-      stop("The step size must be constant (see approx function to interpolate)")
+    }
+    epsilon <- 0.1*dt    
+    if (any(abs(diff(t)-dt) > epsilon*dt))
+        stop("The step size must be constant (see approx function to interpolate)")
   }
   else {
     stop("Error: the data must be in the form of an n x 2 matrix containing the 

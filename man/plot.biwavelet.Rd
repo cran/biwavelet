@@ -14,7 +14,8 @@ Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coheren
                plot.coi = TRUE, lwd.coi=4, col.coi="white", lty.coi=2,
                plot.sig = TRUE, lwd.sig=4, col.sig="black", lty.sig=1,
                bw = FALSE, legend.loc = NULL, legend.horiz = FALSE, 
-               arrow.size = 0.08, arrow.lwd = 2, arrow.cutoff = 0.9, arrow.col="black",
+               arrow.size = 0.08, arrow.size.head = 0.05, arrow.lwd = 2, 
+               arrow.cutoff = 0.9, arrow.col="black",
                arrow.nlocs.x = round(length(x$period)/2), 
                arrow.nlocs.y = round(NCOL(x$wave)/2),
                xlim = NULL, ylim = NULL, xaxt = "s", yaxt = "s", 
@@ -88,7 +89,11 @@ plot a horizontal legend if TRUE. Default is FALSE.
   \item{arrow.size}{
 size of the arrows. Default is 0.08.
 }
-  \item{arrow.lwd}{
+  \item{arrow.size.head}{
+size of the arrow head. Default is 0.05.
+}
+
+\item{arrow.lwd}{
 width/thickness of arrows. Default is 2.
 }
   \item{arrow.cutoff}{
