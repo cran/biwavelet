@@ -164,6 +164,6 @@ plot.biwavelet <-
                 length=round(min(arrow.nlocs.y, length(x$period))))
       phase.plot(x$t[x.ind], log2(x$period[y.ind]), a[y.ind, x.ind], 
                  arrow.size=arrow.size, arrow.size.head=arrow.size.head, 
-                 arrow.lwd=arrow.lwd, arrow.col=arrow.col)    
+                 arrow.lwd=arrow.lwd, arrow.col=arrow.col)
     }
   }
