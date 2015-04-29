@@ -2,6 +2,46 @@
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
 
+
+\section{Changes in biwavelet version 0.17.10 (2015-04-29)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Added ability to handle custom color palettes in \code{plot.biwavelet}.
+    Users can now specify any color scheme using the \code{fill.cols} argument.
+    }
+  }
+}
+
+\section{Changes in biwavelet version 0.17.9 (2015-04-29)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Fixed limited padding issue, which could lead to weird edge effects. 
+    Current padding level is identical to that of Torrence & Compo (1998).
+    \item Changed the default \code{tol} value from 0.95 to 1 in the \code{plot} function.}
+    }
+}
+
+\section{Changes in biwavelet version 0.17.8 (2015-04-28)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Added semi-transparent COI.}
+    }
+}
+
+\section{Changes in biwavelet version 0.17.7 (2015-04-13)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Fixed \code{check.datum} function so that it does not assume a sampling frequency of 1.}
+    }
+}
+
+\section{Changes in biwavelet version 0.17.6 (2015-04-05)}{
+  \subsection{fixed}{
+    \itemize{
+    \item Added ability to set \code{zlim} in \code{plot.biwavelet}.}
+    }
+}
+
 \section{Changes in biwavelet version 0.17.5 (2014-11-05)}{
   \subsection{fixed}{
     \itemize{

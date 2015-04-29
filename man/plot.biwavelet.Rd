@@ -7,18 +7,20 @@ Plot \code{biwavelet} objects
 Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coherence
 }
 \usage{
-\method{plot}{biwavelet} (x, ncol = 64, xlab = "Time", ylab = "Period",
-               tol = 0.95, plot.cb = FALSE, plot.phase = FALSE, 
+\method{plot}{biwavelet} (x, ncol = 64, fill.cols = NULL, xlab = "Time", ylab = "Period",
+               tol = 1, plot.cb = FALSE, plot.phase = FALSE, 
                type=c("power.corr.norm", "power.corr", "power.norm", "power", 
-               "wavelet", "phase"), 
-               plot.coi = TRUE, lwd.coi=4, col.coi="white", lty.coi=2,
-               plot.sig = TRUE, lwd.sig=4, col.sig="black", lty.sig=1,
+                      "wavelet", "phase"), 
+               plot.coi = TRUE, lwd.coi = 1, col.coi = "white", 
+               lty.coi = 1, alpha.coi = 0.5,
+               plot.sig = TRUE, lwd.sig = 4, col.sig = "black", lty.sig = 1,
                bw = FALSE, legend.loc = NULL, legend.horiz = FALSE, 
-               arrow.len = min(par()$pin[2]/30,par()$pin[1]/40), 
+               arrow.len = min(par()$pin[2]/30, par()$pin[1]/40), 
                arrow.lwd = arrow.len*0.3,
-               arrow.cutoff = 0.9, arrow.col="black",
-               xlim = NULL, ylim = NULL, xaxt = "s", yaxt = "s", 
-               form='\%Y', \dots)
+               arrow.cutoff = 0.9, arrow.col = "black",
+               xlim = NULL, ylim = NULL, zlim = NULL, 
+               xaxt = "s", yaxt = "s", 
+               form = '\%Y', \dots)
 }
 \arguments{
   \item{x}{
@@ -26,6 +28,11 @@ Plot \code{biwavelet} objects such as the cwt, cross-wavelet and wavelet coheren
 }
   \item{ncol}{
 number of colors to use. Default is 64.
+}
+  \item{fill.cols}{
+Vector of fill colors to be used. Users can specify color vectors using 
+\code{colorRampPalette} or \code{brewer.pal} from package \code{RColorBrewer}. 
+Default is \code{NULL} and will generate MATLAB's jet color palette.
 }
   \item{xlab}{
 xlabel of the figure. Default is "Time"
@@ -35,8 +42,8 @@ ylabel of the figure. Default is "Period"
 }
   \item{tol}{
 tolerance level for significance contours. Sigificance contours will be drawn around all regions
-of the spectrum where \code{spectrum/percentile >= tol}. Default is \code{0.95}. If strict
-\code{i^{th}} percentile regions are desired, then set \code{tol=1}.
+of the spectrum where \code{spectrum/percentile >= tol}. Default is \code{1}. If strict
+\code{i^{th}} percentile regions are desired, then must be set to \code{tol} must be set to \code{1}.
 }
   \item{plot.cb}{
 plot color bar if TRUE. Default is FALSE.
@@ -52,17 +59,20 @@ the bias-corrected power, \code{power.norm} to plot the power normalized by the 
 Default is \code{power.corr.norm}.
 }
   \item{plot.coi}{
-plot cone of influence (COI) if TRUE. Default is TRUE. Areas that fall outside 
-of the COI can be affected by edge effects.
+plot cone of influence (COI) as a semi-transparent polygon if TRUE. Default is TRUE. 
+Areas that fall within the polygon can be affected by edge effects.
 }
   \item{lwd.coi}{
-Line width of COI. Default is 4.
+Line width of COI. Default is 1.
 }
   \item{col.coi}{
-Color of cone of COI. Default is \code{white}.
+Color of COI. Default is \code{white}.
 }
   \item{lty.coi}{
-Line type of COI
+Line type of COI. Default is 1 for solide lines.
+}
+  \item{alpha.coi}{
+Transparency of COI. Range is 0 (full transparency) to 1 (no transparency). Default is 0.5.
 }
   \item{plot.sig}{
 plot contours for significance if TRUE. Default is TRUE.
@@ -104,6 +114,9 @@ Color of arrows. Default is \code{black}.
 }
  \item{ylim}{ 
  the y limits. The default is \code{NULL}.
+}
+ \item{zlim}{ 
+ the z limits. The default is \code{NULL}.
 }
  \item{xaxt}{ 
  Add x-axis? The default is \code{s}; use \code{n} for none.
