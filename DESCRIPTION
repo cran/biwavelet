@@ -1,8 +1,8 @@
 Package: biwavelet
 Type: Package
 Title: Conduct Univariate and Bivariate Wavelet Analyses
-Version: 0.19.2
-Date: 2016-05-03
+Version: 0.20.3
+Date: 2016-05-08
 Author: Tarik C. Gouhier, Aslak Grinsted, Viliam Simko
 Maintainer: Tarik C. Gouhier <tarik.gouhier@gmail.com>
 Description: This is a port of the WTC MATLAB package written by Aslak Grinsted
@@ -17,6 +17,6 @@ Imports: fields, foreach, Rcpp (>= 0.12.2)
 Suggests: testthat
 RoxygenNote: 5.0.1
 NeedsCompilation: yes
-Packaged: 2016-05-05 01:38:45 UTC; tarik
+Packaged: 2016-05-09 10:38:01 UTC; tarik
 Repository: CRAN
-Date/Publication: 2016-05-05 10:58:32
+Date/Publication: 2016-05-10 10:14:33

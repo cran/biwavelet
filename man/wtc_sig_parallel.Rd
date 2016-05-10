@@ -28,8 +28,8 @@ transform. Default is \code{TRUE}.}
 
 \item{max.scale}{maximum scale}
 
-\item{mother}{type of mother wavelet function to use. Can be set to 
-\code{morlet}, \code{dog}, or \code{paul}. Default is \code{morlet}. 
+\item{mother}{type of mother wavelet function to use. Can be set to
+\code{morlet}, \code{dog}, or \code{paul}. Default is \code{morlet}.
 Significance testing is only available for \code{morlet} wavelet.}
 
 \item{sig.level}{significance level to compute. Default is \code{0.95}}
@@ -41,7 +41,7 @@ Equivalent to \code{wtc.sig}
 }
 \examples{
 # Not run: library(foreach)
-# library(parallel)
+# library(doParallel)
 # cl <- makeCluster(4, outfile="") # number of cores. Notice 'outfile'
 # registerDoParallel(cl)
 # wtc_sig_parallel(your parameters go here)
