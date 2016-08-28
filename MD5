@@ -1,4 +1,4 @@
-43470d402d514132aad95df6c9596f78 *DESCRIPTION
+6ef5024199d411f645c1c88f172fe133 *DESCRIPTION
 90ec10c1d17d6021a5cb687c756b947e *NAMESPACE
 fc55163a1741f325613e35bb3d3a1f30 *R/RcppExports.R
 65f30371e63ff2b4f7b8d039dd89aada *R/ar1.spectrum.R
@@ -7,7 +7,7 @@ f4b6c5488e361a3e7b5cc4a8936d0118 *R/biwavelet-package.R
 8f2e47b35e7d8988e83609ef71428960 *R/check.data.R
 f80b90f81802c7e532ff9e5b27fd38a6 *R/convolve2D.R
 1286413f5b5b94930e83dda6bc7cac06 *R/phase.plot.R
-d7fe2eae6cd6fd74dd9c64fc621647eb *R/plot.biwavelet.R
+4b77eafe789f4c6f5003b0f40d22fdbb *R/plot.biwavelet.R
 e50cd22ce34c6417a488eb1f8763313a *R/pwtc.R
 7f3318e5f8f580a8f1f7e8d352f1f299 *R/smooth.wavelet.R
 b83358e8b9822ba17146bbdb38e56e1e *R/wclust.R
@@ -15,14 +15,14 @@ b83358e8b9822ba17146bbdb38e56e1e *R/wclust.R
 c2eaf44d329ef8493d2aa32bd157fd00 *R/wt.R
 2d75eaf82f0844572d5f0361184103c7 *R/wt.bases.R
 3a173279ff93fed6c642e9a08822515f *R/wt.sig.R
-accec8a244fcfb339b1fab3ce027fa26 *R/wtc.R
+a593fe85ac467d0e4aa575040cd8c745 *R/wtc.R
 2e4b0cb436614f1cfcaa96f3079ef22b *R/wtc.sig.R
 70426e32fef705142eb9f854cb2ae993 *R/wtc_sig_parallel.R
 a77a5b8f2f46aa5029bac3c6da438e0d *R/xwt.R
-015bc3f2d86149b2dffbe1cb578b3de8 *README.md
+aca336a9a661923adbbdf945fec57448 *README.md
 7fb39ad4d94ea5054e99f1450e63bf8d *data/enviro.data.rda
-11ecd3bf439a27ec6b1d5b35ae3ade1b *inst/CITATION
-910f14f59dcb234a888d33b7950d3155 *inst/NEWS.Rd
+8e04f11bd0c41f31d4afcadf3d24707a *inst/CITATION
+d2b5793b581d59234c87893f7ac029c5 *inst/NEWS.Rd
 1f0b2f866cde94a452322c67893d3f82 *man/MOTHERS.Rd
 2c2a60739e265fe12da96f623c970ef3 *man/ar1.spectrum.Rd
 b47430cdae80689f672307324da364be *man/ar1_ma0_sim.Rd
@@ -35,7 +35,7 @@ f93e96e2cd06a4b3ba67677bdb832942 *man/check.datum.Rd
 65aaf29747e0a60280997684de67180d *man/enviro.data.Rd
 b03fd1b321bdeadc88adafb716990afc *man/get_minroots.Rd
 e6a0c9d6e102550f6645c0fa939b7c8a *man/phase.plot.Rd
-a8e55d8fef29b7b3aee5a80ebc46dcc4 *man/plot.biwavelet.Rd
+2a57fb41d71e9506382ba94842daff7f *man/plot.biwavelet.Rd
 da1b1f41e8772b7174a21a06b230c6c6 *man/pwtc.Rd
 1a2cbb4efac20b689c32a01e271ca2e7 *man/rcpp_row_quantile.Rd
 2bb50d6553ff262e6a36529fe3a08fcd *man/rcpp_wt_bases_dog.Rd
@@ -50,7 +50,7 @@ f8602ad79f42737f469823959dbd301c *man/wt.bases.dog.Rd
 4f1d816d8e8f7db2e5d203d48f2018aa *man/wt.bases.morlet.Rd
 c5bb91098dc001a1a50f3b04d10b1ef2 *man/wt.bases.paul.Rd
 c884a381b9c911575ed49efea22b609b *man/wt.sig.Rd
-94ead9f25144e6307b4710a281ec9075 *man/wtc.Rd
+b2ddcdbef9df1dddc764ca67b509c52a *man/wtc.Rd
 c488d03c793bef3e1801d05ab497a28c *man/wtc.sig.Rd
 58ae8a2fb850a279c5df559c3032b759 *man/wtc_sig_parallel.Rd
 c4ce754390e7d3da429bf4a74aedd8b0 *man/xwt.Rd
@@ -61,7 +61,7 @@ c4ce754390e7d3da429bf4a74aedd8b0 *man/xwt.Rd
 be4dafa96c78710abdf66ea5bffd7dbb *src/pivot.h
 5c73ea8228877d53cdc4b3cb23f2fea4 *src/quantile.c
 25f47a2b634a385d275a7ea193b55205 *src/quantile.h
-b258e13865cca84b48c45768052a1624 *src/rcpp_row_quantile.cpp
+448ae07f6109465c5fb4bcbfb21728c7 *src/rcpp_row_quantile.cpp
 a9c46d39cabe924abf087be7f044b583 *src/rcpp_wt_bases_dog.cpp
 411b0bd867cae52c6d091c9164c1bb05 *src/rcpp_wt_bases_morlet.cpp
 e0e5892852e3dc7f454c634e8c032bb2 *src/rcpp_wt_bases_paul.cpp

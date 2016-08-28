@@ -2,6 +2,36 @@
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
 
+\section{Changes in biwavelet version 0.20.10 (2016-09-10)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Function \code{phase.biwavelet} now plots the regions whose significance
+            exceeds \code{arrow.cutoff}. If the object being plotted does not have
+            a significance field, regions whose zvalues exceed the \code{arrow.cutoff}
+            quantile will be plotted.
+      \item Fixed C++ warning about unsupported dynamically sized arrays
+    }
+  }
+}
+
+\section{Changes in biwavelet version 0.20.9 (2016-07-12)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed handling of \code{lag1} coefficients in \code{wtc}.
+    }
+  }
+}
+
+
+\section{Changes in biwavelet version 0.20.8 (2016-06-25)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed handling of axis preferences in \code{plot.biwavelet}.
+    }
+  }
+}
+
+
 \section{Changes in biwavelet version 0.20.7 (2016-06-01)}{
   \subsection{fixed}{
     \itemize{
