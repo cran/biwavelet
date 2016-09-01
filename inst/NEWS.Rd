@@ -2,7 +2,15 @@
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
 
-\section{Changes in biwavelet version 0.20.10 (2016-09-10)}{
+\section{Changes in biwavelet version 0.20.11 (2016-08-31)}{
+  \subsection{added}{
+    \itemize{
+      \item Build vignettes
+    }
+  }
+}
+
+\section{Changes in biwavelet version 0.20.10 (2016-08-10)}{
   \subsection{fixed}{
     \itemize{
       \item Function \code{phase.biwavelet} now plots the regions whose significance
@@ -22,7 +30,6 @@
   }
 }
 
-
 \section{Changes in biwavelet version 0.20.8 (2016-06-25)}{
   \subsection{fixed}{
     \itemize{
@@ -30,7 +37,6 @@
     }
   }
 }
-
 
 \section{Changes in biwavelet version 0.20.7 (2016-06-01)}{
   \subsection{fixed}{
