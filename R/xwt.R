@@ -1,36 +1,40 @@
 #' Compute cross-wavelet
-#' 
+#'
 #' @author Tarik C. Gouhier (tarik.gouhier@@gmail.com)
 #' Code based on WTC MATLAB package written by Aslak Grinsted.
-#' 
-#' @param d1 time series 1 in matrix format (\code{n} rows x 2 columns). The
+#'
+#' @param d1 Time series 1 in matrix format (\code{n} rows x 2 columns). The
 #'   first column should contain the time steps and the second column should
 #'   contain the values.
-#' @param d2 time series 2 in matrix format (\code{n} rows x 2 columns). The
+#' @param d2 Time series 2 in matrix format (\code{n} rows x 2 columns). The
 #'   first column should contain the time steps and the second column should
 #'   contain the values.
-#' @param pad pad the values will with zeros to increase the speed of the
-#'   transform. Default is TRUE.
-#' @param dj spacing between successive scales. Default is 1/12.
-#' @param s0 smallest scale of the wavelet. Default is 2*\code{dt}
-#' @param J1 number of scales - 1.
-#' @param max.scale maximum scale. Computed automatically if left unspecified.
-#' @param mother type of mother wavelet function to use. Can be set to
-#'   \code{morlet}, \code{dog}, or \code{paul}. Default is \code{morlet}.
-#'   Significance testing is only available for \code{morlet} wavelet.
-#' @param param nondimensional parameter specific to the wavelet function.
-#' @param lag1 vector containing the AR(1) coefficient of each time series.
-#' @param sig.level significance level. Default is 0.95.
-#' @param sig.test type of significance test. If set to 0, use a regular
-#'   \eqn{\chi^2} test. If set to 1, then perform a time-average test.
-#'   If set to 2, then do a scale-average test.
-#'   
+#' @param pad Pad the values will with zeros to increase the speed of the
+#'   transform.
+#' @param dj Spacing between successive scales.
+#' @param s0 Smallest scale of the wavelet.
+#' @param J1 Number of scales - 1.
+#' @param max.scale Maximum scale. Computed automatically if left unspecified.
+#' @param mother Type of mother wavelet function to use. Can be set to
+#'   \code{morlet}, \code{dog}, or \code{paul}. Significance testing is only
+#'   available for \code{morlet} wavelet.
+#' @param param Nondimensional parameter specific to the wavelet function.
+#' @param lag1 Vector containing the AR(1) coefficient of each time series.
+#' @param sig.level Significance level.
+#' @param sig.test Type of significance test. If set to 0, use a regular
+#'   \eqn{\chi^2} test. If set to 1, then perform a time-average test. If set to
+#'   2, then do a scale-average test.
+#' @param arima.method Fitting method. This parameter is passed as the
+#' \code{method} parameter to the \code{\link{arima}} function.
+#'
 #' @return Returns a \code{biwavelet} object containing:
 #' \item{coi}{matrix containg cone of influence}
 #' \item{wave}{matrix containing the cross-wavelet transform}
-#' \item{wave.corr}{matrix containing the bias-corrected cross-wavelet transform using the method described by \code{Veleda et al. (2012)}}
+#' \item{wave.corr}{matrix containing the bias-corrected cross-wavelet transform
+#'   using the method described by \code{Veleda et al. (2012)}}
 #' \item{power}{matrix of power}
-#' \item{power.corr}{matrix of bias-corrected cross-wavelet power using the method described by \code{Veleda et al. (2012)}}
+#' \item{power.corr}{matrix of bias-corrected cross-wavelet power using the
+#'   method described by \code{Veleda et al. (2012)}}
 #' \item{phase}{matrix of phases}
 #' \item{period}{vector of periods}
 #' \item{scale}{vector of scales}
@@ -42,35 +46,35 @@
 #' \item{d1.sigma}{standard deviation of time series 1}
 #' \item{d2.sigma}{standard deviation of time series 2}
 #' \item{mother}{mother wavelet used}
-#' \item{type}{type of \code{biwavelet} object created (\code{xwt})}
+#' \item{type}{type of \code{biwavelet} object created (\code{\link{xwt}})}
 #' \item{signif}{matrix containg significance levels}
-#' 
+#'
 #' @references
 #' Cazelles, B., M. Chavez, D. Berteaux, F. Menard, J. O. Vik, S. Jenouvrier,
-#' and N. C. Stenseth. 2008. Wavelet analysis of ecological time series. 
+#' and N. C. Stenseth. 2008. Wavelet analysis of ecological time series.
 #' \emph{Oecologia} 156:287-304.
-#' 
-#' Grinsted, A., J. C. Moore, and S. Jevrejeva. 2004. Application of the cross 
-#' wavelet transform and wavelet coherence to geophysical time series. 
+#'
+#' Grinsted, A., J. C. Moore, and S. Jevrejeva. 2004. Application of the cross
+#' wavelet transform and wavelet coherence to geophysical time series.
 #' \emph{Nonlinear Processes in Geophysics} 11:561-566.
-#' 
-#' Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis. 
+#'
+#' Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis.
 #' \emph{Bulletin of the American Meteorological Society} 79:61-78.
-#' 
+#'
 #' Torrence, C., and P. J. Webster. 1998. The annual cycle of persistence in the
 #' El Nino/Southern Oscillation. \emph{Quarterly Journal of the Royal
 #' Meteorological Society} 124:1985-2004.
-#' 
+#'
 #' Veleda, D., R. Montagne, and M. Araujo. 2012. Cross-Wavelet Bias Corrected by
-#' Normalizing Scales. \emph{Journal of Atmospheric and Oceanic Technology} 
+#' Normalizing Scales. \emph{Journal of Atmospheric and Oceanic Technology}
 #' 29:1401-1408.
-#' 
-#' @example vignettes/example-xwt.R
+#'
+#' @example inst/doc/example-xwt.R
 #' @export
 xwt <- function(d1, d2, pad = TRUE, dj = 1 / 12, s0 = 2 * dt,
                 J1 = NULL, max.scale = NULL, mother = "morlet",
                 param = -1, lag1 = NULL, sig.level = 0.95,
-                sig.test = 0) {
+                sig.test = 0, arima.method = "CSS") {
 
   mother <- match.arg(tolower(mother), MOTHERS)
 
@@ -90,8 +94,8 @@ xwt <- function(d1, d2, pad = TRUE, dj = 1 / 12, s0 = 2 * dt,
   }
 
   # Get AR(1) coefficients for each time series
-  d1.ar1 <- arima(d1[,2], order = c(1, 0, 0))$coef[1]
-  d2.ar1 <- arima(d2[,2], order = c(1, 0, 0))$coef[1]
+  d1.ar1 <- arima(d1[,2], order = c(1, 0, 0), method = arima.method)$coef[1]
+  d2.ar1 <- arima(d2[,2], order = c(1, 0, 0), method = arima.method)$coef[1]
 
   # Get CWT of each time series
   wt1 <- wt(d = d1, pad = pad, dj = dj, s0 = s0, J1 = J1,

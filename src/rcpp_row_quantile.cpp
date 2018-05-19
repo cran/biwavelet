@@ -1,5 +1,4 @@
 #include <Rcpp.h>
-#include <vector>
 using namespace Rcpp;
 
 extern "C" {
@@ -20,13 +19,14 @@ extern "C" {
 // [[Rcpp::export]]
 NumericVector rcpp_row_quantile(NumericMatrix data, const double q) {
 
+  const size_t rowLen = data.ncol();
+  const size_t nrow = data.nrow();
+
   // fail fast
   if ((q < 0) || (q > 1)) {
     stop("value 'q' is out of range 0 to 1");
+    return NumericVector(nrow, NA_REAL);
   }
-
-  const size_t rowLen = data.ncol();
-  const size_t nrow = data.nrow();
 
   // a vector of NAs is returned for matrices without columns
   if (rowLen == 0) {
@@ -37,10 +37,14 @@ NumericVector rcpp_row_quantile(NumericMatrix data, const double q) {
   NumericVector result(nrow);
 
   // buffer for a row copy (needed by the quantile function)
+
+  // VLA (variable size arrays) are forbidden in ISO C++,
+  // the following line won't work with -Werror-Wall -pedantic flags
   // double rowData[rowLen];
-  std::vector<double> rowDataVec;
-  rowDataVec.resize(rowLen);
-  double* rowData = &rowDataVec[0];
+
+  // therefore use heap allocation
+  // (just don't forget to call delete before return)
+  double* rowData = new double[rowLen];
 
   for (size_t row = 0; row < nrow; row++) {
     for (size_t col = 0; col < rowLen; col++) {
@@ -49,12 +53,12 @@ NumericVector rcpp_row_quantile(NumericMatrix data, const double q) {
     result[row] = quantile(rowData, rowLen, q);
   }
 
+  delete[] rowData;
   return result;
 }
 
 /*** R
 data <- matrix(rnorm(25), 5, 5)
-data <- matrix(rnorm(100), nrow = 1)
 rcpp_row_quantile(data, .75)
 sapply(1:5, function(x) quantile(data[x,], .75))
 */

@@ -1,31 +1,33 @@
 #' Determine significance of wavelet transform
-#' 
+#'
 #' @author Tarik C. Gouhier (tarik.gouhier@@gmail.com)
-#' 
+#'
 #' Code based on wavelet MATLAB program written by Christopher Torrence
 #' and Gibert P. Compo.
-#' 
-#' @param d time series in matrix format (\code{n} rows x 2 columns). The first
+#'
+#' @param d Time series in matrix format (\code{n} rows x 2 columns). The first
 #'   column should contain the time steps and the second column should contain
 #'   the values.
-#' @param dt length of a time step.
-#' @param scale the wavelet scale.
-#' @param sig.test type of significance test. If set to 0, use a regular
-#'   \eqn{\chi^2} test. If set to 1, then perform a time-average test.
-#'   If set to 2, then do a scale-average test.
-#' @param sig.level significance level. Default is 0.95.
-#' @param dof degrees of freedom for each point in wavelet power.
+#' @param dt Length of a time step.
+#' @param scale The wavelet scale.
+#' @param sig.test Type of significance test. If set to 0, use a regular
+#'   \eqn{\chi^2} test. If set to 1, then perform a time-average test. If set to
+#'   2, then do a scale-average test.
+#' @param sig.level Significance level.
+#' @param dof Degrees of freedom for each point in wavelet power.
 #' @param lag1 AR(1) coefficient of time series used to test for significant
 #'   patterns.
-#' @param mother type of mother wavelet function to use. Can be set to
-#'   \code{morlet}, \code{dog}, or \code{paul}. Default is \code{morlet}.
-#' @param param nondimensional parameter specific to the wavelet function.
-#' @param sigma2 variance of time series
-#' 
+#' @param mother Type of mother wavelet function to use. Can be set to
+#'   \code{morlet}, \code{dog}, or \code{paul}.
+#' @param param Nondimensional parameter specific to the wavelet function.
+#' @param sigma2 Variance of time series
+#' @param arima.method Fitting method. This parameter is passed as the
+#'   \code{method} Parameter to the \code{\link{arima}} function.
+#'
 #' @return Returns a list containing:
 #' \item{signif}{vector containing significance level for each scale}
 #' \item{signif}{vector of red-noise spectrum for each period}
-#' 
+#'
 #' @references
 #' Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis.
 #' \emph{Bulletin of the American Meteorological Society} 79:61-78.
@@ -33,11 +35,11 @@
 #' @examples
 #' # Not run: wt.sig(d, dt, scale, sig.test, sig.level, lag1,
 #' #                 dof = -1, mother = "morlet", sigma2 = 1)
-#' 
+#'
 #' @export
 wt.sig <- function(d, dt, scale, sig.test = 0, sig.level = 0.95,
                    dof = 2, lag1 = NULL, mother = "morlet",
-                   param = -1, sigma2 = NULL) {
+                   param = -1, sigma2 = NULL, arima.method = "CSS") {
 
   mother <- match.arg(tolower(mother), MOTHERS)
 
@@ -45,7 +47,7 @@ wt.sig <- function(d, dt, scale, sig.test = 0, sig.level = 0.95,
 
   # Find the AR1 coefficient
   if (is.null(lag1)) {
-    lag1 <- arima(x, order = c(1, 0, 0))$coef[1]
+    lag1 <- arima(x, order = c(1, 0, 0), method = arima.method)$coef[1]
   }
 
   J1 <- length(scale) - 1

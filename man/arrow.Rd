@@ -2,24 +2,27 @@
 % Please edit documentation in R/phase.plot.R
 \name{arrow}
 \alias{arrow}
-\title{Helper function for phase.plot}
+\title{Helper function for \code{\link{phase.plot}} (not exported)}
 \usage{
 arrow(x, y, l = 0.1, w = 0.3 * l, alpha, col = "black")
 }
 \arguments{
-\item{x}{TODO}
+\item{x}{X-coordinate of the arrow.}
 
-\item{y}{TODO}
+\item{y}{Y-coordinate of the arrow.}
 
-\item{l}{TODO}
+\item{l}{Length of the arrow.}
 
-\item{w}{TODO}
+\item{w}{Width of the arrow.}
 
-\item{alpha}{TODO}
+\item{alpha}{Angle of the arrow in radians (0 .. 2*pi).}
 
-\item{col}{TODO}
+\item{col}{Color of the arrow.}
 }
 \description{
-Helper function for phase.plot
+Helper function for \code{\link{phase.plot}} (not exported)
 }
-
+\examples{
+plot.new()
+arrow(0,0, alpha = 0)
+}

@@ -7,10 +7,10 @@
 wt.bases(mother = "morlet", ...)
 }
 \arguments{
-\item{mother}{type of mother wavelet function to use. Can be set to
-\code{morlet}, \code{dog}, or \code{paul}. Default is \code{morlet}.}
+\item{mother}{Type of mother wavelet function to use. Can be set to
+\code{morlet}, \code{dog}, or \code{paul}.}
 
-\item{...}{see parameters \code{k}, \code{scale} and \code{param} in
+\item{...}{See parameters \code{k}, \code{scale} and \code{param} in
 functions: \code{\link{wt.bases.morlet}}, \code{\link{wt.bases.paul}} and
           \code{\link{wt.bases.dog}}}
 }
@@ -28,14 +28,13 @@ Computes the wavelet as a function of Fourier frequency.
 # Not run: wb <- wt.bases(mother, k, scale[a1], param)
 
 }
+\references{
+Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis.
+\emph{Bulletin of the American Meteorological Society} 79:61-78.
+}
 \author{
 Tarik C. Gouhier (tarik.gouhier@gmail.com)
 
 Code based on wavelet MATLAB program written by Christopher Torrence and
 Gibert P. Compo.
 }
-\references{
-Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis. 
-\emph{Bulletin of the American Meteorological Society} 79:61-78.
-}
-

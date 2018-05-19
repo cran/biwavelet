@@ -2,6 +2,59 @@
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
 
+\section{Changes in biwavelet version 0.20.17 (2018-05-19)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Updated package by removing benchmarks in vignettes for CRAN submission
+      \item yaxis tickmarks should now be accurate (no more rounding issues)
+    }
+  }
+}
+
+\section{Changes in biwavelet version 0.20.16 (2018-03-26)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed documentation for wtc function
+    }
+  }
+}
+
+
+\section{Changes in biwavelet version 0.20.15 (2017-03-01)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed return NULL issues with Windows platforms
+    }
+  }
+}
+
+\section{Changes in biwavelet version 0.20.14 (2017-02-24)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed \code{plot.biwavelet} so that the COI extends all
+      the way to the bottom of the plot (max of periods)
+    }
+  }
+}
+
+\section{Changes in biwavelet version 0.20.13 (2016-12-27)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed \code{plot.biwavelet} so that the \code{arrow.cutoff}
+            argument applies to rsq values for wtc and pwtc objects
+    }
+  }
+}
+
+\section{Changes in biwavelet version 0.20.12 (2016-12-27)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Fixed \code{plot.biwavelet} so that the \code{arrow.cutoff}
+            argument applies to rsq values
+    }
+  }
+}
+
 \section{Changes in biwavelet version 0.20.11 (2016-08-31)}{
   \subsection{added}{
     \itemize{

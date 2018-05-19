@@ -47,6 +47,7 @@ List rcpp_wt_bases_morlet(const NumericVector k,
   const int m = param == -1 ? 6 : param;
   if(m < 0 || m > 10) {
     stop("Parameter 'm' must be within 0..10");
+    return List::create();
   }
 
   const int klen = k.length();
@@ -94,7 +95,7 @@ p <- 4
 out <- microbenchmark(
   wt.bases.morlet(k, s, p),
   rcpp_wt_bases_morlet(k, s, p),
-  times = 2000L
+  times = 100000L
 )
 options(digits = 6)
 options(microbenchmark.unit = "t")
