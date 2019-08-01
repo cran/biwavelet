@@ -6,7 +6,8 @@
 It uses \code{\link{text}()} to print a character using a default font.
 This way, it is possible to render different types of arrows.}
 \usage{
-arrow2(x, y, angle, size = 0.1, col = "black", chr = intToUtf8(10139))
+arrow2(x, y, angle, size = 0.1, col = "black",
+  chr = intToUtf8(10139))
 }
 \arguments{
 \item{x}{X-coordinate of the arrow.}
