@@ -2,6 +2,14 @@
 \title{News for Package 'biwavelet'}
 \encoding{UTF-8}
 
+\section{Changes in biwavelet version 0.20.21 (2021-05-24)}{
+  \subsection{fixed}{
+    \itemize{
+      \item Merged PR from Dirk Eddelbuettel for defining STRICT_R_HEADERS in Rcpp
+    }
+  }
+}
+
 \section{Changes in biwavelet version 0.20.19 (2019-08-01)}{
   \subsection{fixed}{
     \itemize{

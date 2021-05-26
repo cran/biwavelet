@@ -171,9 +171,11 @@ MOTHERS <- c("morlet", "paul", "dog")
 #' }
 #'
 #' @source
-#' MEI: \url{http://www.esrl.noaa.gov/psd/enso/mei}
-#' NPGO: \url{http://www.o3d.org/npgo}
-#' PDO: \url{http://jisao.washington.edu/pdo}
+#' MEI: \url{https://psl.noaa.gov/enso/mei/}
+#'
+#' NPGO: \url{http://www.o3d.org/npgo/}
+#'
+#' PDO: \url{http://research.jisao.washington.edu/pdo/}
 #'
 #' @references
 #' Di Lorenzo, E., N. Schneider, K. M. Cobb, P. J. S. Franks, K. Chhak, A. J. Miller,
