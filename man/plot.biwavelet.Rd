@@ -136,9 +136,9 @@ Arrows pointing to the right mean that \code{x} and \code{y} are in phase.
 
 Arrows pointing to the left mean that \code{x} and \code{y} are in anti-phase.
 
-Arrows pointing up mean that \code{y} leads \code{x} by \eqn{\pi/2}.
+Arrows pointing up mean that \code{x} leads \code{y} by \eqn{\pi/2}.
 
-Arrows pointing down mean that \code{x} leads \code{y} by \eqn{\pi/2}.
+Arrows pointing down mean that \code{y} leads \code{x} by \eqn{\pi/2}.
 }
 \examples{
 t1 <- cbind(1:100, rnorm(100))
@@ -201,9 +201,6 @@ Torrence, C., and G. P. Compo. 1998. A Practical Guide to Wavelet Analysis.
 Liu, Y., X. San Liang, and R. H. Weisberg. 2007. Rectification of the Bias in
 the Wavelet Power Spectrum. \emph{Journal of Atmospheric and Oceanic
 Technology} 24:2093-2102.
-}
-\seealso{
-\code{\link{image.plot}}
 }
 \author{
 Tarik C. Gouhier (tarik.gouhier@gmail.com)

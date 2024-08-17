@@ -64,9 +64,9 @@
 #'
 #' Arrows pointing to the left mean that \code{x} and \code{y} are in anti-phase.
 #'
-#' Arrows pointing up mean that \code{y} leads \code{x} by \eqn{\pi/2}.
+#' Arrows pointing up mean that \code{x} leads \code{y} by \eqn{\pi/2}.
 #'
-#' Arrows pointing down mean that \code{x} leads \code{y} by \eqn{\pi/2}.
+#' Arrows pointing down mean that \code{y} leads \code{x} by \eqn{\pi/2}.
 #'
 #' @references
 #' Cazelles, B., M. Chavez, D. Berteaux, F. Menard, J. O. Vik, S. Jenouvrier,
@@ -86,8 +86,6 @@
 #'
 #' @author Tarik C. Gouhier (tarik.gouhier@@gmail.com)
 #' Code based on WTC MATLAB package written by Aslak Grinsted.
-#'
-#' @seealso \code{\link{image.plot}}
 #'
 #' @examples
 #' t1 <- cbind(1:100, rnorm(100))
